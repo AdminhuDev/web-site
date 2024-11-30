@@ -26,6 +26,24 @@
     --gradient-secondary: linear-gradient(135deg, var(--secondary), var(--info));
 }
 
+/* Tema Claro */
+[data-theme="light"] {
+    --primary: #4F46E5;
+    --primary-dark: #3730A3;
+    --secondary: #2563EB;
+    --success: #059669;
+    --danger: #DC2626;
+    --warning: #D97706;
+    --info: #2563EB;
+    --dark: #F8FAFC;
+    --darker: #F1F5F9;
+    --border: rgba(0, 0, 0, 0.1);
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --navbar-bg: rgba(255, 255, 255, 0.9);
+}
+
 /* Reset e Estilos Base */
 * {
     margin: 0;

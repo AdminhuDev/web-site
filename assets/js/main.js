@@ -18,52 +18,48 @@ function debounce(func, wait) {
 // Gerenciamento de Tema
 function initTheme() {
     const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('.material-symbols-rounded');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Função para atualizar tema
+    function updateTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        themeIcon.textContent = theme === 'dark' ? 'dark_mode' : 'light_mode';
+        
+        // Atualizar classes do body
+        if (theme === 'dark') {
+            document.body.classList.add('dark-theme');
+            document.body.classList.remove('light-theme');
+        } else {
+            document.body.classList.add('light-theme');
+            document.body.classList.remove('dark-theme');
+        }
+    }
     
     // Carregar tema salvo ou usar preferência do sistema
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        if (themeToggle) {
-            themeToggle.checked = savedTheme === 'dark';
-        }
+        updateTheme(savedTheme);
     } else {
         const systemTheme = prefersDarkScheme.matches ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', systemTheme);
-        if (themeToggle) {
-            themeToggle.checked = systemTheme === 'dark';
-        }
+        updateTheme(systemTheme);
     }
 
-    updateThemeIcon();
+    // Alternar tema ao clicar no botão
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        updateTheme(newTheme);
+    });
 
-    if (themeToggle) {
-        themeToggle.addEventListener('change', () => {
-            const newTheme = themeToggle.checked ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon();
-        });
-    }
-
+    // Atualizar quando mudar preferência do sistema
     prefersDarkScheme.addEventListener('change', (e) => {
         if (!localStorage.getItem('theme')) {
             const systemTheme = e.matches ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', systemTheme);
-            if (themeToggle) {
-                themeToggle.checked = systemTheme === 'dark';
-            }
-            updateThemeIcon();
+            updateTheme(systemTheme);
         }
     });
-}
-
-function updateThemeIcon() {
-    const themeIcon = document.querySelector('.theme-icon');
-    if (themeIcon) {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        themeIcon.textContent = currentTheme === 'dark' ? 'dark_mode' : 'light_mode';
-    }
 }
 
 // Animações e UI
