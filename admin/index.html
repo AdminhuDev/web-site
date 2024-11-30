@@ -69,40 +69,25 @@
 
     <!-- Firebase -->
     <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js';
-        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js';
-        import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js';
-        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js';
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyBSO52n1xmwKHtcrbEWG1Wr5r1WOnPicbk",
-            authDomain: "adminhudev.firebaseapp.com",
-            projectId: "adminhudev",
-            storageBucket: "adminhudev.firebasestorage.app",
-            messagingSenderId: "1009850456954",
-            appId: "1:1009850456954:web:804aa91bc13cf226e7d4c3",
-            measurementId: "G-6XGWG3K0P1"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-        const analytics = getAnalytics(app);
+        import { auth } from '../assets/js/firebase-config.js';
+        import { signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
         // Auth state observer
-        onAuthStateChanged(auth, (user) => {
+        auth.onAuthStateChanged((user) => {
             if (!user) {
                 window.location.href = 'login.html';
             }
         });
 
         // Logout handler
-        document.getElementById('logout').addEventListener('click', (e) => {
+        document.getElementById('logout').addEventListener('click', async (e) => {
             e.preventDefault();
-            signOut(auth).then(() => {
+            try {
+                await signOut(auth);
                 window.location.href = 'login.html';
-            });
+            } catch (error) {
+                console.error('Erro ao fazer logout:', error);
+            }
         });
 
         // Navigation handler
@@ -112,6 +97,10 @@
                     e.preventDefault();
                     const page = e.target.getAttribute('href').replace('#', '');
                     loadContent(page);
+                    
+                    // Atualizar link ativo
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    e.target.classList.add('active');
                 }
             });
         });
@@ -123,9 +112,11 @@
             
             try {
                 const response = await fetch(`${page}.html`);
+                if (!response.ok) throw new Error('Página não encontrada');
                 const html = await response.text();
                 content.innerHTML = html;
             } catch (error) {
+                console.error('Erro ao carregar conteúdo:', error);
                 content.innerHTML = '<div class="alert alert-danger">Erro ao carregar conteúdo</div>';
             }
         }
