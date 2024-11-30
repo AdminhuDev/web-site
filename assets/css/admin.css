@@ -296,3 +296,18 @@ body {
     white-space: nowrap;
     z-index: 1000;
 }
+
+/* Logo e Cabeçalho */
+.logo-text {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+}
