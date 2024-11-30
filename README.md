@@ -80,7 +80,6 @@ adminhudev.github.io/
 │   │   └── admin.css
 │   └── js/
 │       ├── main.js
-│       ├── animations.js
 │       ├── admin.js
 │       └── firebase-config.js
 ├── admin/
