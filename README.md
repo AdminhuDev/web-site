@@ -134,20 +134,9 @@ Se você gosta do meu trabalho e quer me apoiar, você pode me pagar um café! I
 - Website: [adminhudev.github.io](https://adminhudev.github.io)
 - GitHub: [@AdminhuDev](https://github.com/AdminhuDev)
 
-## 📄 Licença e Direitos Autorais
+## 📄 Licença
 
-Este projeto está protegido sob as seguintes políticas:
-
-- **Licença MIT**: Veja o arquivo [LICENSE](LICENSE) para detalhes
-- **Guia de Contribuição**: Veja [CONTRIBUTING.md](CONTRIBUTING.md)
-- **Código de Conduta**: Veja [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
-
-### Direitos Autorais
-
-- Todo o código e design são propriedade intelectual de AdminhuDev
-- O uso comercial requer autorização prévia
-- Modificações devem manter os créditos originais
-- Uso pessoal permitido sob os termos da licença MIT
+Este projeto está protegido sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para detalhes.
 
 ---
 
