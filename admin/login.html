@@ -86,91 +86,32 @@
     <!-- Firebase -->
     <script type="module">
         import { auth, githubProvider, authorizedUsers } from '../assets/js/firebase-config.js';
-        import { signInWithPopup, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+        import { signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
-        const loginButton = document.getElementById('githubLogin');
-        const errorMessage = document.getElementById('errorMessage');
-        const infoMessage = document.getElementById('infoMessage');
-
-        function showError(message) {
-            errorMessage.textContent = message;
-            errorMessage.classList.remove('d-none');
-            infoMessage.classList.add('d-none');
-            loginButton.disabled = false;
-            loginButton.classList.remove('loading');
-        }
-
-        function showInfo(message) {
-            infoMessage.textContent = message;
-            infoMessage.classList.remove('d-none');
-            errorMessage.classList.add('d-none');
-        }
-
-        // Tentar login com popup primeiro, se falhar, usar redirect
-        async function handleLogin() {
-            loginButton.disabled = true;
-            loginButton.classList.add('loading');
-            errorMessage.classList.add('d-none');
-            infoMessage.classList.add('d-none');
-
+        document.getElementById('github-login').addEventListener('click', async () => {
             try {
-                // Tentar login com popup
                 const result = await signInWithPopup(auth, githubProvider);
                 const user = result.user;
                 
+                // Verificar se o usuário está autorizado
                 if (authorizedUsers.includes(user.reloadUserInfo.screenName)) {
-                    showInfo('Login realizado com sucesso! Redirecionando...');
-                    window.location.href = 'index.html';
+                    localStorage.setItem('adminUser', JSON.stringify({
+                        uid: user.uid,
+                        username: user.reloadUserInfo.screenName,
+                        email: user.email,
+                        avatar: user.photoURL
+                    }));
+                    window.location.href = './index.html';
                 } else {
-                    await auth.signOut();
-                    showError('Usuário não autorizado');
+                    throw new Error('Usuário não autorizado');
                 }
             } catch (error) {
-                console.error('Erro de login:', error);
-                
-                if (error.code === 'auth/popup-blocked' || error.code === 'auth/popup-closed-by-user') {
-                    showInfo('Redirecionando para login do GitHub...');
-                    try {
-                        // Se o popup falhar, tentar com redirect
-                        await signInWithRedirect(auth, githubProvider);
-                    } catch (redirectError) {
-                        showError('Erro ao redirecionar para o GitHub');
-                    }
-                } else if (error.code === 'auth/unauthorized-domain') {
-                    showError('Este domínio não está autorizado para login');
-                } else {
-                    showError('Erro ao fazer login. Tente novamente.');
-                }
-            }
-        }
-
-        // Event Listeners
-        loginButton.addEventListener('click', handleLogin);
-
-        // Verificar resultado do redirect
-        getRedirectResult(auth)
-            .then((result) => {
-                if (result) {
-                    const user = result.user;
-                    if (authorizedUsers.includes(user.reloadUserInfo.screenName)) {
-                        showInfo('Login realizado com sucesso! Redirecionando...');
-                        window.location.href = 'index.html';
-                    } else {
-                        auth.signOut();
-                        showError('Usuário não autorizado');
-                    }
-                }
-            })
-            .catch((error) => {
-                if (error.code !== 'auth/null-result') {
-                    showError('Erro ao processar login do GitHub');
-                }
-            });
-
-        // Verificar se já está logado
-        auth.onAuthStateChanged((user) => {
-            if (user && authorizedUsers.includes(user.reloadUserInfo.screenName)) {
-                window.location.href = 'index.html';
+                console.error('Erro no login:', error);
+                const errorMessage = document.getElementById('error-message');
+                errorMessage.textContent = error.message === 'Usuário não autorizado' 
+                    ? 'Acesso negado. Você não tem permissão para acessar o painel.' 
+                    : 'Erro ao fazer login. Por favor, tente novamente.';
+                errorMessage.style.display = 'block';
             }
         });
     </script>

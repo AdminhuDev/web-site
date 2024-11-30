@@ -24,4 +24,7 @@ githubProvider.setCustomParameters({
     'allow_signup': 'false'
 });
 
-export { db, auth, githubProvider };
+// Lista de usuários autorizados
+const authorizedUsers = ['AdminhuDev'];
+
+export { db, auth, githubProvider, authorizedUsers };
