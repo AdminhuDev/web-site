@@ -305,9 +305,74 @@ body {
 }
 
 .gradient-text {
-    background: var(--gradient-primary);
+    background: linear-gradient(45deg, #0d6efd, #0dcaf0);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-fill-color: transparent;
+    font-weight: 700;
+}
+
+/* Estilos da Página de Login */
+.card.shadow-lg {
+    border: none;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+[data-theme="dark"] .card.shadow-lg {
+    background: rgba(44, 48, 52, 0.9);
+}
+
+#github-login {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#github-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#github-login:active {
+    transform: translateY(0);
+}
+
+.alert-danger {
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Ajustes responsivos para login */
+@media (max-width: 576px) {
+    .card-body.p-5 {
+        padding: 2rem !important;
+    }
+    
+    .logo-text {
+        font-size: 1.75rem;
+    }
 }
