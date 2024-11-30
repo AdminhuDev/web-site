@@ -1,226 +1,171 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark">
+<html lang="pt-BR" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AdminhuDev - Painel Administrativo</title>
+    <title>AdminhuDev - Painel</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Custom CSS -->
-    <link href="../assets/css/admin.css" rel="stylesheet">
-
-    <!-- Auth Check Script -->
-    <script type="module">
-        import { auth } from '../assets/js/firebase-config.js';
-        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-
-        // Elementos
-        const loadingOverlay = document.getElementById('loadingOverlay');
-
-        // Configurações
-        const authorizedUsers = ['AdminhuDev'];
-        let authChecked = false;
-        let authTimeout;
-
-        // Função para redirecionar para login
-        function redirectToLogin(reason = '') {
-            console.log('Redirecionando para login:', reason);
-            clearTimeout(authTimeout);
-            window.location.href = 'login.html';
-        }
-
-        // Função para mostrar erro
-        function showError(message) {
-            loadingOverlay.innerHTML = `
-                <div class="auth-error">
-                    <div class="alert alert-danger" role="alert">
-                        <h4 class="alert-heading">Erro de Autenticação</h4>
-                        <p>${message}</p>
-                    </div>
-                </div>
-            `;
-            setTimeout(() => redirectToLogin('Erro: ' + message), 3000);
-        }
-
-        // Verificar autenticação
-        try {
-            // Timeout para fallback
-            authTimeout = setTimeout(() => {
-                if (!authChecked) {
-                    redirectToLogin('Timeout');
-                }
-            }, 5000);
-
-            // Observer de autenticação
-            onAuthStateChanged(auth, (user) => {
-                if (!authChecked) {
-                    authChecked = true;
-                    clearTimeout(authTimeout);
-
-                    if (!user) {
-                        redirectToLogin('Usuário não autenticado');
-                    } else if (!authorizedUsers.includes(user.reloadUserInfo.screenName)) {
-                        showError('Acesso não autorizado para este usuário.');
-                    } else {
-                        // Usuário autenticado e autorizado
-                        document.body.classList.add('auth-ready');
-                        loadingOverlay.classList.add('fade-out');
-                        setTimeout(() => {
-                            loadingOverlay.style.display = 'none';
-                        }, 300);
-                    }
-                }
-            });
-        } catch (error) {
-            console.error('Erro na verificação de autenticação:', error);
-            showError('Erro ao verificar autenticação. Por favor, tente novamente.');
-        }
-
-        // Proteção adicional contra manipulação do DOM
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                    const body = document.body;
-                    if (!authChecked || !auth.currentUser) {
-                        body.style.display = 'none';
-                    }
-                }
-            });
-        });
-
-        observer.observe(document.body, {
-            attributes: true,
-            attributeFilter: ['style']
-        });
-
-        // Interceptar navegação
-        window.addEventListener('popstate', () => {
-            if (!auth.currentUser) {
-                redirectToLogin('Navegação não autorizada');
-            }
-        });
-    </script>
-
     <style>
-        body {
-            display: none;
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 20px;
+            background: rgba(33, 37, 41, 0.95);
+            backdrop-filter: blur(10px);
         }
-        .auth-error {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 2rem;
+        
+        .main-content {
+            margin-left: 280px;
+        }
+        
+        @media (max-width: 991.98px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .notification-badge {
+            background: var(--bs-danger);
+            color: white;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: auto;
         }
     </style>
 </head>
-<body>
+<body class="bg-dark">
     <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="loading-overlay">
+    <div id="loadingOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark d-flex align-items-center justify-content-center" style="z-index: 9999;">
         <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Carregando...</span>
         </div>
     </div>
 
-    <div class="admin-container">
-        <!-- Sidebar -->
-        <nav id="sidebar" class="sidebar">
-            <div class="sidebar-header">
-                <h2 class="logo-text mb-0">
-                    <span class="gradient-text">AdminhuDev</span>
-                </h2>
-                <h6 class="text-secondary mt-2">Painel Administrativo</h6>
-            </div>
-            
-            <ul class="nav flex-column sidebar-nav">
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar" style="width: 280px;">
+        <div class="mb-4 text-center">
+            <h4 class="mb-1">AdminhuDev</h4>
+            <div class="text-secondary">Painel Administrativo</div>
+        </div>
+        
+        <ul class="nav flex-column mb-auto">
+            <li class="nav-item">
+                <a class="nav-link active text-white" href="#dashboard">
+                    <span class="material-symbols-rounded">dashboard</span>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#projects">
+                    <span class="material-symbols-rounded">code</span>
+                    Projetos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#skills">
+                    <span class="material-symbols-rounded">psychology</span>
+                    Habilidades
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#contacts">
+                    <span class="material-symbols-rounded">mail</span>
+                    Mensagens
+                    <span class="notification-badge" id="newMessagesCount">0</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="border-top pt-3">
+            <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#dashboard">
-                        <span class="material-symbols-rounded">dashboard</span>
-                        Dashboard
+                    <a class="nav-link text-white" href="/" target="_blank">
+                        <span class="material-symbols-rounded">public</span>
+                        Ver Site
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#projects">
-                        <span class="material-symbols-rounded">code</span>
-                        Projetos
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#skills">
-                        <span class="material-symbols-rounded">psychology</span>
-                        Habilidades
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contacts">
-                        <span class="material-symbols-rounded">mail</span>
-                        Mensagens
-                        <span class="notification-badge" id="newMessagesCount">0</span>
+                    <a class="nav-link text-white" href="#" id="logout">
+                        <span class="material-symbols-rounded">logout</span>
+                        Sair
                     </a>
                 </li>
             </ul>
+        </div>
+    </nav>
 
-            <div class="sidebar-footer">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/" target="_blank">
-                            <span class="material-symbols-rounded">public</span>
-                            Ver Site
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="logout">
-                            <span class="material-symbols-rounded">logout</span>
-                            Sair
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <!-- Main Content -->
-        <main class="main">
-            <!-- Header -->
-            <header class="admin-navbar">
-                <button class="navbar-toggler d-lg-none" type="button" id="sidebarToggle">
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg bg-dark border-bottom">
+            <div class="container-fluid">
+                <button class="btn btn-link d-lg-none text-white" type="button" id="sidebarToggle">
                     <span class="material-symbols-rounded">menu</span>
                 </button>
                 
-                <div class="user-menu">
+                <div class="ms-auto">
                     <div class="dropdown">
-                        <button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle d-flex align-items-center gap-2" type="button" id="userDropdown" data-bs-toggle="dropdown">
                             <span class="material-symbols-rounded">account_circle</span>
-                            <span id="userName" class="ms-2">Carregando...</span>
+                            <span id="userName">Carregando...</span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="/" target="_blank">
-                                <span class="material-symbols-rounded">public</span>
+                                <span class="material-symbols-rounded me-2">public</span>
                                 Ver Site
                             </a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#" id="logoutDropdown">
-                                <span class="material-symbols-rounded">logout</span>
+                                <span class="material-symbols-rounded me-2">logout</span>
                                 Sair
                             </a></li>
                         </ul>
                     </div>
                 </div>
-            </header>
+            </div>
+        </nav>
 
-            <!-- Content Area -->
-            <div class="content-wrapper">
-                <div id="content" class="animate-fade-in">
-                    <div id="loading" class="text-center mt-5">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Carregando...</span>
-                        </div>
+        <!-- Content Area -->
+        <div class="container-fluid py-4">
+            <div id="content">
+                <div class="text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Carregando...</span>
                     </div>
                 </div>
             </div>
-        </main>
-    </div>
+        </div>
+    </main>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -229,24 +174,28 @@
         import { signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
         import { collection, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
-        // Auth state observer
+        // Auth check
+        const authorizedUsers = ['AdminhuDev'];
+        let authChecked = false;
+
         auth.onAuthStateChanged((user) => {
-            if (!user) {
+            if (!user || !authorizedUsers.includes(user.reloadUserInfo.screenName)) {
                 window.location.href = 'login.html';
             } else {
                 document.getElementById('userName').textContent = user.displayName || 'Admin';
+                document.getElementById('loadingOverlay').style.display = 'none';
                 setupMessageCounter();
             }
         });
 
-        // Contador de mensagens novas
+        // Message counter
         function setupMessageCounter() {
             const q = query(collection(db, 'messages'), where('status', '==', 'new'));
             onSnapshot(q, (snapshot) => {
                 const count = snapshot.size;
                 const badge = document.getElementById('newMessagesCount');
                 badge.textContent = count;
-                badge.style.display = count > 0 ? 'inline-flex' : 'none';
+                badge.style.display = count > 0 ? 'inline' : 'none';
             });
         }
 
@@ -255,7 +204,7 @@
             document.getElementById('sidebar').classList.toggle('show');
         });
 
-        // Logout handlers
+        // Logout
         async function handleLogout() {
             try {
                 await signOut(auth);
@@ -268,7 +217,7 @@
         document.getElementById('logout').addEventListener('click', handleLogout);
         document.getElementById('logoutDropdown').addEventListener('click', handleLogout);
 
-        // Navigation handler
+        // Navigation
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 if (!e.target.href || e.target.href.includes('#')) {
@@ -277,11 +226,9 @@
                         const page = e.target.getAttribute('href').replace('#', '');
                         loadContent(page);
                         
-                        // Atualizar link ativo
                         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
                         e.target.classList.add('active');
                         
-                        // Fechar sidebar em mobile
                         if (window.innerWidth < 992) {
                             document.getElementById('sidebar').classList.remove('show');
                         }
@@ -293,7 +240,7 @@
         // Content loader
         async function loadContent(page) {
             const content = document.getElementById('content');
-            content.innerHTML = '<div class="text-center mt-5"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Carregando...</span></div></div>';
+            content.innerHTML = '<div class="text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Carregando...</span></div></div>';
             
             try {
                 const response = await fetch(`${page}.html`);
@@ -306,8 +253,6 @@
                     <div class="alert alert-danger">
                         <h4 class="alert-heading">Erro ao carregar conteúdo</h4>
                         <p>Não foi possível carregar a página solicitada. Por favor, tente novamente.</p>
-                        <hr>
-                        <p class="mb-0">Se o problema persistir, verifique sua conexão ou entre em contato com o suporte.</p>
                     </div>
                 `;
             }
