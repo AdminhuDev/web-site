@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Função para verificar se o usuário está na lista de autorizados
+    function isAuthorizedUser() {
+      return request.auth != null && 
+             request.auth.token.screenName in ['AdminhuDev'];
+    }
+
+    // Regras para projetos
+    match /projects/{projectId} {
+      allow read: if true; // Leitura pública
+      allow write: if isAuthorizedUser();
+    }
+
+    // Regras para habilidades
+    match /skills/{skillId} {
+      allow read: if true; // Leitura pública
+      allow write: if isAuthorizedUser();
+    }
+
+    // Regras para mensagens
+    match /messages/{messageId} {
+      allow read: if isAuthorizedUser();
+      allow create: if true; // Permite que visitantes enviem mensagens
+      allow update, delete: if isAuthorizedUser();
+    }
+  }
+} 
