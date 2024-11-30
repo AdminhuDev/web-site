@@ -67,18 +67,32 @@ O projeto implementa várias medidas de segurança:
 ## 📂 Estrutura do Projeto
 
 ```
-portfolio/
+adminhudev.github.io/
 ├── index.html
+├── 404.html
+├── robots.txt
+├── sitemap.xml
+├── .htaccess
+├── firebase.json
 ├── assets/
 │   ├── css/
-│   │   └── style.css
+│   │   ├── style.css
+│   │   └── admin.css
 │   └── js/
-│       ├── common.js
-│       └── main.js
-├── LICENSE
-├── CONTRIBUTING.md
-├── CODE_OF_CONDUCT.md
-└── README.md
+│       ├── main.js
+│       ├── animations.js
+│       ├── admin.js
+│       └── firebase-config.js
+├── admin/
+│   ├── index.html
+│   ├── login.html
+│   ├── dashboard.html
+│   ├── projects.html
+│   ├── skills.html
+│   └── contacts.html
+└── .github/
+    └── workflows/
+        └── deploy.yml
 ```
 
 ## 🚀 Como Usar
