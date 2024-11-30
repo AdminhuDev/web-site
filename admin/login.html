@@ -41,8 +41,9 @@
 
     <!-- Scripts -->
     <script type="module">
-        import { auth, githubProvider, authorizedUsers } from '../assets/js/firebase-config.js';
+        import { auth, githubProvider, authorizedUsers, analytics } from '../assets/js/firebase-config.js';
         import { signInWithPopup, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+        import { logEvent } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
 
         const loginButton = document.getElementById('github-login');
         const errorMessage = document.getElementById('error-message');
@@ -52,6 +53,11 @@
             errorMessage.textContent = message;
             errorMessage.classList.remove('d-none');
             loginButton.disabled = false;
+            
+            // Log do erro
+            logEvent(analytics, 'login_error', {
+                error_message: message
+            });
         }
 
         // Tentar login com popup primeiro, se falhar, usar redirect
@@ -60,11 +66,22 @@
                 loginButton.disabled = true;
                 errorMessage.classList.add('d-none');
 
+                // Log de tentativa de login
+                logEvent(analytics, 'login_attempt', {
+                    method: 'github_popup'
+                });
+
                 // Tentar login com popup
                 const result = await signInWithPopup(auth, githubProvider);
                 const user = result.user;
                 
                 if (authorizedUsers.includes(user.reloadUserInfo.screenName)) {
+                    // Log de login bem sucedido
+                    logEvent(analytics, 'login_success', {
+                        user_id: user.uid,
+                        username: user.reloadUserInfo.screenName
+                    });
+
                     localStorage.setItem('adminUser', JSON.stringify({
                         uid: user.uid,
                         username: user.reloadUserInfo.screenName,
@@ -81,6 +98,12 @@
                 
                 if (error.code === 'auth/popup-blocked' || error.code === 'auth/popup-closed-by-user') {
                     try {
+                        // Log de fallback para redirect
+                        logEvent(analytics, 'login_attempt', {
+                            method: 'github_redirect',
+                            reason: error.code
+                        });
+
                         // Se o popup falhar, tentar com redirect
                         await signInWithRedirect(auth, githubProvider);
                     } catch (redirectError) {
@@ -103,6 +126,13 @@
                 if (result) {
                     const user = result.user;
                     if (authorizedUsers.includes(user.reloadUserInfo.screenName)) {
+                        // Log de login bem sucedido via redirect
+                        logEvent(analytics, 'login_success', {
+                            user_id: user.uid,
+                            username: user.reloadUserInfo.screenName,
+                            method: 'github_redirect'
+                        });
+
                         localStorage.setItem('adminUser', JSON.stringify({
                             uid: user.uid,
                             username: user.reloadUserInfo.screenName,
