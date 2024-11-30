@@ -1,5 +1,5 @@
 // Firebase Data Loader
-import { db } from './firebase-config.js';
+import { db } from '/assets/js/firebase-config.js';
 import { collection, query, where, orderBy, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 // Utilitários
