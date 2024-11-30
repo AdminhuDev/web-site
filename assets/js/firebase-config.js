@@ -1,6 +1,7 @@
 // Firebase Configuration
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { getAuth, GithubAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBXxZu_0DAFXTxZkIpqKFXp3AJxbGUQHZY",
@@ -14,5 +15,13 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
+const githubProvider = new GithubAuthProvider();
 
-export { db };
+// Configurar GitHub Provider
+githubProvider.addScope('read:user');
+githubProvider.setCustomParameters({
+    'allow_signup': 'false'
+});
+
+export { db, auth, githubProvider };
