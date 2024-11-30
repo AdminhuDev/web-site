@@ -18,6 +18,10 @@
             <!-- Sidebar -->
             <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
                 <div class="position-sticky pt-3">
+                    <div class="sidebar-header mb-4 text-center">
+                        <img src="../assets/img/logo.png" alt="AdminhuDev Logo" class="img-fluid mb-3" style="max-width: 150px;">
+                        <h6 class="text-white mb-0">Painel Administrativo</h6>
+                    </div>
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active" href="#dashboard">
@@ -40,7 +44,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#contacts">
                                 <span class="material-symbols-rounded">mail</span>
-                                Contatos
+                                Mensagens
+                                <span class="badge bg-primary rounded-pill" id="newMessagesCount">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <a class="nav-link" href="/" target="_blank">
+                                <span class="material-symbols-rounded">public</span>
+                                Ver Site
                             </a>
                         </li>
                         <li class="nav-item">
@@ -55,8 +66,28 @@
 
             <!-- Main content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- Header -->
+                <div class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-2 mb-3 border-bottom">
+                    <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="d-flex align-items-center ms-auto">
+                        <div class="dropdown">
+                            <button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                                <span class="material-symbols-rounded me-2">account_circle</span>
+                                <span id="userName">Carregando...</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="/" target="_blank">Ver Site</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logoutDropdown">Sair</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content area -->
                 <div id="content">
-                    <!-- Content will be loaded here -->
                     <div id="loading" class="text-center mt-5">
                         <div class="spinner-border" role="status">
                             <span class="visually-hidden">Carregando...</span>
@@ -69,38 +100,57 @@
 
     <!-- Firebase -->
     <script type="module">
-        import { auth } from '../assets/js/firebase-config.js';
+        import { auth, db } from '../assets/js/firebase-config.js';
         import { signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+        import { collection, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
         // Auth state observer
         auth.onAuthStateChanged((user) => {
             if (!user) {
                 window.location.href = 'login.html';
+            } else {
+                document.getElementById('userName').textContent = user.displayName || 'Admin';
+                setupMessageCounter();
             }
         });
 
-        // Logout handler
-        document.getElementById('logout').addEventListener('click', async (e) => {
-            e.preventDefault();
+        // Contador de mensagens novas
+        function setupMessageCounter() {
+            const q = query(collection(db, 'messages'), where('status', '==', 'new'));
+            onSnapshot(q, (snapshot) => {
+                const count = snapshot.size;
+                const badge = document.getElementById('newMessagesCount');
+                badge.textContent = count;
+                badge.style.display = count > 0 ? 'inline' : 'none';
+            });
+        }
+
+        // Logout handlers
+        async function handleLogout() {
             try {
                 await signOut(auth);
                 window.location.href = 'login.html';
             } catch (error) {
                 console.error('Erro ao fazer logout:', error);
             }
-        });
+        }
+
+        document.getElementById('logout').addEventListener('click', handleLogout);
+        document.getElementById('logoutDropdown').addEventListener('click', handleLogout);
 
         // Navigation handler
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
-                if (e.target.id !== 'logout') {
+                if (!e.target.href || e.target.href.includes('#')) {
                     e.preventDefault();
-                    const page = e.target.getAttribute('href').replace('#', '');
-                    loadContent(page);
-                    
-                    // Atualizar link ativo
-                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                    e.target.classList.add('active');
+                    if (e.target.id !== 'logout' && !e.target.hasAttribute('target')) {
+                        const page = e.target.getAttribute('href').replace('#', '');
+                        loadContent(page);
+                        
+                        // Atualizar link ativo
+                        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                        e.target.classList.add('active');
+                    }
                 }
             });
         });
@@ -117,12 +167,27 @@
                 content.innerHTML = html;
             } catch (error) {
                 console.error('Erro ao carregar conteúdo:', error);
-                content.innerHTML = '<div class="alert alert-danger">Erro ao carregar conteúdo</div>';
+                content.innerHTML = `
+                    <div class="alert alert-danger">
+                        <h4 class="alert-heading">Erro ao carregar conteúdo</h4>
+                        <p>Não foi possível carregar a página solicitada. Por favor, tente novamente.</p>
+                        <hr>
+                        <p class="mb-0">Se o problema persistir, verifique sua conexão ou entre em contato com o suporte.</p>
+                    </div>
+                `;
             }
         }
 
         // Load dashboard by default
         loadContent('dashboard');
+
+        // Tema escuro/claro
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        function updateTheme(e) {
+            document.documentElement.setAttribute('data-bs-theme', e.matches ? 'dark' : 'light');
+        }
+        prefersDark.addListener(updateTheme);
+        updateTheme(prefersDark);
     </script>
 
     <!-- Bootstrap JS -->
