@@ -2,6 +2,7 @@
 
 [![GitHub](https://img.shields.io/badge/GitHub-AdminhuDev-blue?style=flat-square&logo=github)](https://github.com/AdminhuDev)
 [![Website](https://img.shields.io/badge/Website-Portfolio-green?style=flat-square&logo=google-chrome)](https://adminhudev.github.io)
+[![Telegram](https://img.shields.io/badge/Telegram-@Analista__Adminhu-blue?style=flat-square&logo=telegram)](https://t.me/Analista_Adminhu)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
 > Desenvolvedor Full Stack apaixonado por transformar ideias em experiências digitais incríveis através de código limpo e design moderno.
@@ -62,6 +63,7 @@ adminhudev.github.io/
 
 - Website: [adminhudev.github.io](https://adminhudev.github.io)
 - GitHub: [@AdminhuDev](https://github.com/AdminhuDev)
+- Telegram: [@Analista_Adminhu](https://t.me/Analista_Adminhu)
 
 ## 📄 Licença
 
