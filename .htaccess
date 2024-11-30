@@ -6,9 +6,11 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 # Redirecionar para página 404 personalizada
 ErrorDocument 404 /404.html
 
-# Habilitar compressão Gzip
-<IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json
+# Desabilitar cache durante desenvolvimento
+<IfModule mod_headers.c>
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
 </IfModule>
 
 # Definir cabeçalhos de segurança
