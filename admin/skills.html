@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<div class="container-fluid">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Gerenciar Habilidades</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSkillModal">
+                <span class="material-symbols-rounded">add</span>
+                Nova Habilidade
+            </button>
+        </div>
+    </div>
+
+    <!-- Lista de Habilidades -->
+    <div class="row" id="skillsList">
+        <!-- Preenchido via JavaScript -->
+    </div>
+
+    <!-- Modal Adicionar/Editar Habilidade -->
+    <div class="modal fade" id="addSkillModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Nova Habilidade</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="skillForm">
+                        <input type="hidden" id="skillId">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Categoria</label>
+                            <select class="form-select" id="category" required>
+                                <option value="frontend">Frontend</option>
+                                <option value="backend">Backend</option>
+                                <option value="devops">DevOps & Outros</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="level" class="form-label">Nível (0-100)</label>
+                            <input type="number" class="form-control" id="level" min="0" max="100" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="icon" class="form-label">Ícone (Material Symbols)</label>
+                            <input type="text" class="form-control" id="icon" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="saveSkill">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module">
+    import { db } from '../assets/js/firebase-config.js';
+    import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, serverTimestamp } 
+    from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js';
+    
+    const skillsCollection = collection(db, 'skills');
+    let editingId = null;
+
+    // Carregar habilidades
+    async function loadSkills() {
+        try {
+            const snapshot = await getDocs(skillsCollection);
+            const skillsList = document.getElementById('skillsList');
+            skillsList.innerHTML = '';
+
+            snapshot.forEach(doc => {
+                const skill = doc.data();
+                const col = document.createElement('div');
+                col.className = 'col-md-4 mb-4';
+                col.innerHTML = `
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="card-title mb-0">${skill.name}</h5>
+                                <span class="material-symbols-rounded">${skill.icon}</span>
+                            </div>
+                            <p class="card-text text-muted">${skill.category}</p>
+                            <div class="progress mb-3">
+                                <div class="progress-bar" role="progressbar" style="width: ${skill.level}%" 
+                                     aria-valuenow="${skill.level}" aria-valuemin="0" aria-valuemax="100">
+                                    ${skill.level}%
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-outline-primary edit-skill" data-id="${doc.id}">
+                                    <span class="material-symbols-rounded">edit</span>
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger delete-skill" data-id="${doc.id}">
+                                    <span class="material-symbols-rounded">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                skillsList.appendChild(col);
+            });
+
+            // Adicionar event listeners
+            document.querySelectorAll('.edit-skill').forEach(button => {
+                button.addEventListener('click', (e) => editSkill(e.target.dataset.id));
+            });
+
+            document.querySelectorAll('.delete-skill').forEach(button => {
+                button.addEventListener('click', (e) => deleteSkill(e.target.dataset.id));
+            });
+
+        } catch (error) {
+            console.error('Erro ao carregar habilidades:', error);
+        }
+    }
+
+    // Salvar habilidade
+    async function saveSkill() {
+        const skillData = {
+            name: document.getElementById('name').value,
+            category: document.getElementById('category').value,
+            level: parseInt(document.getElementById('level').value),
+            icon: document.getElementById('icon').value,
+            timestamp: serverTimestamp()
+        };
+
+        try {
+            if (editingId) {
+                await updateDoc(doc(db, 'skills', editingId), skillData);
+            } else {
+                await addDoc(skillsCollection, skillData);
+            }
+            
+            bootstrap.Modal.getInstance(document.getElementById('addSkillModal')).hide();
+            loadSkills();
+            document.getElementById('skillForm').reset();
+            editingId = null;
+        } catch (error) {
+            console.error('Erro ao salvar habilidade:', error);
+        }
+    }
+
+    // Editar habilidade
+    async function editSkill(id) {
+        try {
+            const skillDoc = await doc(db, 'skills', id);
+            const skill = (await getDoc(skillDoc)).data();
+            
+            document.getElementById('skillId').value = id;
+            document.getElementById('name').value = skill.name;
+            document.getElementById('category').value = skill.category;
+            document.getElementById('level').value = skill.level;
+            document.getElementById('icon').value = skill.icon;
+            
+            editingId = id;
+            document.getElementById('modalTitle').textContent = 'Editar Habilidade';
+            new bootstrap.Modal(document.getElementById('addSkillModal')).show();
+        } catch (error) {
+            console.error('Erro ao carregar habilidade para edição:', error);
+        }
+    }
+
+    // Deletar habilidade
+    async function deleteSkill(id) {
+        if (confirm('Tem certeza que deseja excluir esta habilidade?')) {
+            try {
+                await deleteDoc(doc(db, 'skills', id));
+                loadSkills();
+            } catch (error) {
+                console.error('Erro ao deletar habilidade:', error);
+            }
+        }
+    }
+
+    // Event Listeners
+    document.getElementById('saveSkill').addEventListener('click', saveSkill);
+    document.getElementById('addSkillModal').addEventListener('hidden.bs.modal', () => {
+        document.getElementById('skillForm').reset();
+        editingId = null;
+        document.getElementById('modalTitle').textContent = 'Nova Habilidade';
+    });
+
+    // Carregar habilidades inicialmente
+    loadSkills();
+</script> 
