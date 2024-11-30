@@ -3,11 +3,6 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Permitir acesso direto aos arquivos HTML na pasta admin
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^admin/([^/]+)/?$ admin/$1.html [L]
-
 # Redirecionar para página 404 personalizada
 ErrorDocument 404 /404.html
 
@@ -24,10 +19,3 @@ ErrorDocument 404 /404.html
     Header set Referrer-Policy "strict-origin-when-cross-origin"
     Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 </IfModule>
-
-# Permitir acesso à pasta admin
-<Directory "/admin">
-    Order allow,deny
-    Allow from all
-    Require all granted
-</Directory>

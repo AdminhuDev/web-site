@@ -1,74 +1,65 @@
 <!DOCTYPE html>
-<div class="container-fluid">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h4 class="mb-0">Dashboard</h4>
-        <button type="button" class="btn btn-primary d-flex align-items-center gap-2" id="refreshStats">
-            <span class="material-symbols-rounded">refresh</span>
-            Atualizar
-        </button>
+<div class="container-fluid animate-slide-in">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4">
+        <h1 class="h2 text-gradient">Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <button type="button" class="btn btn-primary btn-icon" id="refreshStats">
+                <span class="material-symbols-rounded">refresh</span>
+                Atualizar
+            </button>
+        </div>
     </div>
 
-    <div class="row g-4 mb-4">
-        <div class="col-md-4">
-            <div class="card bg-primary bg-opacity-10 border-0">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="bg-primary bg-opacity-10 p-3 rounded">
-                            <span class="material-symbols-rounded text-primary">code</span>
-                        </div>
-                        <div class="ms-3">
-                            <h6 class="text-secondary mb-1">Projetos</h6>
-                            <h3 class="mb-0" id="projectCount">0</h3>
-                        </div>
-                    </div>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="stats-card card">
+                <div class="icon">
+                    <span class="material-symbols-rounded">code</span>
+                </div>
+                <div class="content">
+                    <div class="title">Projetos</div>
+                    <div class="value" id="projectCount">0</div>
+                    <small class="text-muted">Total de projetos cadastrados</small>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card bg-info bg-opacity-10 border-0">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="bg-info bg-opacity-10 p-3 rounded">
-                            <span class="material-symbols-rounded text-info">psychology</span>
-                        </div>
-                        <div class="ms-3">
-                            <h6 class="text-secondary mb-1">Habilidades</h6>
-                            <h3 class="mb-0" id="skillCount">0</h3>
-                        </div>
-                    </div>
+        <div class="col-md-4 mb-4">
+            <div class="stats-card card">
+                <div class="icon">
+                    <span class="material-symbols-rounded">psychology</span>
+                </div>
+                <div class="content">
+                    <div class="title">Habilidades</div>
+                    <div class="value" id="skillCount">0</div>
+                    <small class="text-muted">Total de habilidades cadastradas</small>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card bg-success bg-opacity-10 border-0">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="bg-success bg-opacity-10 p-3 rounded">
-                            <span class="material-symbols-rounded text-success">mail</span>
-                        </div>
-                        <div class="ms-3">
-                            <h6 class="text-secondary mb-1">Mensagens</h6>
-                            <h3 class="mb-0" id="messageCount">0</h3>
-                        </div>
-                    </div>
+        <div class="col-md-4 mb-4">
+            <div class="stats-card card">
+                <div class="icon">
+                    <span class="material-symbols-rounded">mail</span>
+                </div>
+                <div class="content">
+                    <div class="title">Mensagens</div>
+                    <div class="value" id="messageCount">0</div>
+                    <small class="text-muted">Total de mensagens recebidas</small>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row g-4">
-        <div class="col-md-6">
+    <div class="row">
+        <div class="col-md-6 mb-4">
             <div class="card">
-                <div class="card-header bg-transparent border-bottom">
-                    <div class="d-flex align-items-center">
-                        <span class="material-symbols-rounded text-primary me-2">mail</span>
-                        <h5 class="mb-0">Últimas Mensagens</h5>
-                    </div>
-                </div>
-                <div class="card-body p-0">
+                <div class="card-body">
+                    <h5 class="card-title d-flex align-items-center gap-2 mb-4">
+                        <span class="material-symbols-rounded text-primary">mail</span>
+                        Últimas Mensagens
+                    </h5>
                     <div class="table-responsive">
-                        <table class="table table-hover mb-0">
-                            <thead class="table-light">
+                        <table class="table">
+                            <thead>
                                 <tr>
                                     <th>Nome</th>
                                     <th>Email</th>
@@ -83,18 +74,16 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mb-4">
             <div class="card">
-                <div class="card-header bg-transparent border-bottom">
-                    <div class="d-flex align-items-center">
-                        <span class="material-symbols-rounded text-primary me-2">code</span>
-                        <h5 class="mb-0">Projetos Recentes</h5>
-                    </div>
-                </div>
-                <div class="card-body p-0">
+                <div class="card-body">
+                    <h5 class="card-title d-flex align-items-center gap-2 mb-4">
+                        <span class="material-symbols-rounded text-primary">code</span>
+                        Projetos Recentes
+                    </h5>
                     <div class="table-responsive">
-                        <table class="table table-hover mb-0">
-                            <thead class="table-light">
+                        <table class="table">
+                            <thead>
                                 <tr>
                                     <th>Título</th>
                                     <th>Tecnologias</th>
@@ -131,7 +120,7 @@
             // Carregar mensagens recentes
             const recentMessagesQuery = query(collection(db, 'messages'), orderBy('timestamp', 'desc'), limit(5));
             const recentMessagesSnapshot = await getDocs(recentMessagesQuery);
-            const messagesTableBody = document.getElementById('recentMessages');
+            const messagesTableBody = document.querySelector('#recentMessages');
             messagesTableBody.innerHTML = '';
 
             recentMessagesSnapshot.forEach(doc => {
@@ -148,7 +137,7 @@
             // Carregar projetos recentes
             const recentProjectsQuery = query(collection(db, 'projects'), orderBy('timestamp', 'desc'), limit(5));
             const recentProjectsSnapshot = await getDocs(recentProjectsQuery);
-            const projectsTableBody = document.getElementById('recentProjects');
+            const projectsTableBody = document.querySelector('#recentProjects');
             projectsTableBody.innerHTML = '';
 
             recentProjectsSnapshot.forEach(doc => {
@@ -157,11 +146,7 @@
                 row.innerHTML = `
                     <td>${data.title}</td>
                     <td>${data.technologies.join(', ')}</td>
-                    <td>
-                        <span class="badge ${data.status === 'active' ? 'bg-success' : 'bg-secondary'}">
-                            ${data.status}
-                        </span>
-                    </td>
+                    <td><span class="status-badge ${data.status === 'active' ? 'new' : 'read'}">${data.status}</span></td>
                 `;
                 projectsTableBody.appendChild(row);
             });
