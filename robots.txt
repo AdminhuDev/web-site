@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Sitemap: https://adminhudev.github.io/sitemap.xml
+
+# Permitir indexação de todas as páginas
+Allow: /index.html
+Allow: /#projects
+Allow: /#skills
+Allow: /#contact
+
+# Otimização de rastreamento
+Crawl-delay: 10 
