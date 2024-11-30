@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<div class="container-fluid">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Gerenciar Habilidades</h1>
+<div class="container-fluid animate-fade-in">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4">
+        <h1 class="h2 text-gradient">Gerenciar Habilidades</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSkillModal">
+            <button type="button" class="btn btn-primary btn-icon" data-bs-toggle="modal" data-bs-target="#addSkillModal">
                 <span class="material-symbols-rounded">add</span>
                 Nova Habilidade
             </button>
@@ -17,40 +17,54 @@
 
     <!-- Modal Adicionar/Editar Habilidade -->
     <div class="modal fade" id="addSkillModal" tabindex="-1">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header border-bottom">
                     <h5 class="modal-title" id="modalTitle">Nova Habilidade</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="skillForm">
+                    <form id="skillForm" class="needs-validation" novalidate>
                         <input type="hidden" id="skillId">
                         <div class="mb-3">
                             <label for="name" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="name" required>
+                            <div class="invalid-feedback">Por favor, insira um nome.</div>
                         </div>
                         <div class="mb-3">
                             <label for="category" class="form-label">Categoria</label>
                             <select class="form-select" id="category" required>
+                                <option value="">Selecione uma categoria</option>
                                 <option value="frontend">Frontend</option>
                                 <option value="backend">Backend</option>
                                 <option value="devops">DevOps & Outros</option>
                             </select>
+                            <div class="invalid-feedback">Por favor, selecione uma categoria.</div>
                         </div>
                         <div class="mb-3">
                             <label for="level" class="form-label">Nível (0-100)</label>
                             <input type="number" class="form-control" id="level" min="0" max="100" required>
+                            <div class="invalid-feedback">Por favor, insira um nível entre 0 e 100.</div>
                         </div>
                         <div class="mb-3">
                             <label for="icon" class="form-label">Ícone (Material Symbols)</label>
-                            <input type="text" class="form-control" id="icon" required>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="icon" required>
+                                <button class="btn btn-outline-secondary" type="button" onclick="window.open('https://fonts.google.com/icons', '_blank')">
+                                    <span class="material-symbols-rounded">search</span>
+                                </button>
+                            </div>
+                            <div class="invalid-feedback">Por favor, insira um ícone.</div>
+                            <small class="text-muted">Clique no botão para buscar ícones</small>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="saveSkill">Salvar</button>
+                <div class="modal-footer border-top">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="saveSkill">
+                        <span class="material-symbols-rounded">save</span>
+                        Salvar
+                    </button>
                 </div>
             </div>
         </div>
@@ -59,11 +73,12 @@
 
 <script type="module">
     import { db } from '../assets/js/firebase-config.js';
-    import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, serverTimestamp } 
+    import { collection, addDoc, getDocs, getDoc, doc, updateDoc, deleteDoc, serverTimestamp } 
     from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js';
     
     const skillsCollection = collection(db, 'skills');
     let editingId = null;
+    const skillModal = new bootstrap.Modal(document.getElementById('addSkillModal'));
 
     // Carregar habilidades
     async function loadSkills() {
@@ -81,86 +96,124 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h5 class="card-title mb-0">${skill.name}</h5>
-                                <span class="material-symbols-rounded">${skill.icon}</span>
+                                <span class="material-symbols-rounded text-primary">${skill.icon}</span>
                             </div>
-                            <p class="card-text text-muted">${skill.category}</p>
-                            <div class="progress mb-3">
-                                <div class="progress-bar" role="progressbar" style="width: ${skill.level}%" 
+                            <p class="card-text text-secondary mb-3">
+                                <span class="badge bg-${getCategoryColor(skill.category)} me-2">${skill.category}</span>
+                            </p>
+                            <div class="progress mb-3" style="height: 8px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: ${skill.level}%" 
                                      aria-valuenow="${skill.level}" aria-valuemin="0" aria-valuemax="100">
-                                    ${skill.level}%
                                 </div>
                             </div>
-                            <div class="btn-group">
-                                <button class="btn btn-sm btn-outline-primary edit-skill" data-id="${doc.id}">
-                                    <span class="material-symbols-rounded">edit</span>
-                                </button>
-                                <button class="btn btn-sm btn-outline-danger delete-skill" data-id="${doc.id}">
-                                    <span class="material-symbols-rounded">delete</span>
-                                </button>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-secondary">${skill.level}%</span>
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-light edit-skill" data-id="${doc.id}">
+                                        <span class="material-symbols-rounded">edit</span>
+                                    </button>
+                                    <button class="btn btn-sm btn-light delete-skill" data-id="${doc.id}">
+                                        <span class="material-symbols-rounded">delete</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 `;
                 skillsList.appendChild(col);
-            });
 
-            // Adicionar event listeners
-            document.querySelectorAll('.edit-skill').forEach(button => {
-                button.addEventListener('click', (e) => editSkill(e.target.dataset.id));
-            });
-
-            document.querySelectorAll('.delete-skill').forEach(button => {
-                button.addEventListener('click', (e) => deleteSkill(e.target.dataset.id));
+                // Adicionar event listeners
+                const editBtn = col.querySelector('.edit-skill');
+                const deleteBtn = col.querySelector('.delete-skill');
+                
+                editBtn.addEventListener('click', () => editSkill(doc.id));
+                deleteBtn.addEventListener('click', () => deleteSkill(doc.id));
             });
 
         } catch (error) {
             console.error('Erro ao carregar habilidades:', error);
+            showAlert('Erro ao carregar habilidades. Por favor, tente novamente.', 'danger');
         }
+    }
+
+    // Função para obter cor da categoria
+    function getCategoryColor(category) {
+        const colors = {
+            frontend: 'info',
+            backend: 'success',
+            devops: 'warning'
+        };
+        return colors[category] || 'secondary';
+    }
+
+    // Validar formulário
+    function validateForm() {
+        const form = document.getElementById('skillForm');
+        if (!form.checkValidity()) {
+            form.classList.add('was-validated');
+            return false;
+        }
+        return true;
     }
 
     // Salvar habilidade
     async function saveSkill() {
-        const skillData = {
-            name: document.getElementById('name').value,
-            category: document.getElementById('category').value,
-            level: parseInt(document.getElementById('level').value),
-            icon: document.getElementById('icon').value,
-            timestamp: serverTimestamp()
-        };
+        if (!validateForm()) return;
+
+        const saveButton = document.getElementById('saveSkill');
+        const originalText = saveButton.innerHTML;
+        saveButton.disabled = true;
+        saveButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Salvando...';
 
         try {
+            const skillData = {
+                name: document.getElementById('name').value,
+                category: document.getElementById('category').value,
+                level: parseInt(document.getElementById('level').value),
+                icon: document.getElementById('icon').value,
+                timestamp: serverTimestamp()
+            };
+
             if (editingId) {
                 await updateDoc(doc(db, 'skills', editingId), skillData);
             } else {
                 await addDoc(skillsCollection, skillData);
             }
             
-            bootstrap.Modal.getInstance(document.getElementById('addSkillModal')).hide();
+            skillModal.hide();
             loadSkills();
-            document.getElementById('skillForm').reset();
-            editingId = null;
+            showAlert('Habilidade salva com sucesso!', 'success');
         } catch (error) {
             console.error('Erro ao salvar habilidade:', error);
+            showAlert('Erro ao salvar habilidade. Por favor, tente novamente.', 'danger');
+        } finally {
+            saveButton.disabled = false;
+            saveButton.innerHTML = originalText;
         }
     }
 
     // Editar habilidade
     async function editSkill(id) {
         try {
-            const skillDoc = await doc(db, 'skills', id);
-            const skill = (await getDoc(skillDoc)).data();
+            const skillDoc = doc(db, 'skills', id);
+            const snapshot = await getDoc(skillDoc);
             
-            document.getElementById('skillId').value = id;
-            document.getElementById('name').value = skill.name;
-            document.getElementById('category').value = skill.category;
-            document.getElementById('level').value = skill.level;
-            document.getElementById('icon').value = skill.icon;
-            
-            editingId = id;
-            document.getElementById('modalTitle').textContent = 'Editar Habilidade';
-            new bootstrap.Modal(document.getElementById('addSkillModal')).show();
+            if (snapshot.exists()) {
+                const skill = snapshot.data();
+                document.getElementById('skillId').value = id;
+                document.getElementById('name').value = skill.name;
+                document.getElementById('category').value = skill.category;
+                document.getElementById('level').value = skill.level;
+                document.getElementById('icon').value = skill.icon;
+                
+                editingId = id;
+                document.getElementById('modalTitle').textContent = 'Editar Habilidade';
+                document.getElementById('skillForm').classList.remove('was-validated');
+                skillModal.show();
+            }
         } catch (error) {
             console.error('Erro ao carregar habilidade para edição:', error);
+            showAlert('Erro ao carregar habilidade. Por favor, tente novamente.', 'danger');
         }
     }
 
@@ -170,16 +223,31 @@
             try {
                 await deleteDoc(doc(db, 'skills', id));
                 loadSkills();
+                showAlert('Habilidade excluída com sucesso!', 'success');
             } catch (error) {
                 console.error('Erro ao deletar habilidade:', error);
+                showAlert('Erro ao excluir habilidade. Por favor, tente novamente.', 'danger');
             }
         }
+    }
+
+    // Mostrar alerta
+    function showAlert(message, type) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed bottom-0 end-0 m-3`;
+        alertDiv.innerHTML = `
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        `;
+        document.body.appendChild(alertDiv);
+        setTimeout(() => alertDiv.remove(), 5000);
     }
 
     // Event Listeners
     document.getElementById('saveSkill').addEventListener('click', saveSkill);
     document.getElementById('addSkillModal').addEventListener('hidden.bs.modal', () => {
         document.getElementById('skillForm').reset();
+        document.getElementById('skillForm').classList.remove('was-validated');
         editingId = null;
         document.getElementById('modalTitle').textContent = 'Nova Habilidade';
     });
