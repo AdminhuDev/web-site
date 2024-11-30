@@ -12,8 +12,118 @@
     
     <!-- Custom CSS -->
     <link href="../assets/css/admin.css" rel="stylesheet">
+
+    <!-- Auth Check Script -->
+    <script type="module">
+        import { auth } from '../assets/js/firebase-config.js';
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+        // Elementos
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
+        // Configurações
+        const authorizedUsers = ['AdminhuDev'];
+        let authChecked = false;
+        let authTimeout;
+
+        // Função para redirecionar para login
+        function redirectToLogin(reason = '') {
+            console.log('Redirecionando para login:', reason);
+            clearTimeout(authTimeout);
+            window.location.href = 'login.html';
+        }
+
+        // Função para mostrar erro
+        function showError(message) {
+            loadingOverlay.innerHTML = `
+                <div class="auth-error">
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="alert-heading">Erro de Autenticação</h4>
+                        <p>${message}</p>
+                    </div>
+                </div>
+            `;
+            setTimeout(() => redirectToLogin('Erro: ' + message), 3000);
+        }
+
+        // Verificar autenticação
+        try {
+            // Timeout para fallback
+            authTimeout = setTimeout(() => {
+                if (!authChecked) {
+                    redirectToLogin('Timeout');
+                }
+            }, 5000);
+
+            // Observer de autenticação
+            onAuthStateChanged(auth, (user) => {
+                if (!authChecked) {
+                    authChecked = true;
+                    clearTimeout(authTimeout);
+
+                    if (!user) {
+                        redirectToLogin('Usuário não autenticado');
+                    } else if (!authorizedUsers.includes(user.reloadUserInfo.screenName)) {
+                        showError('Acesso não autorizado para este usuário.');
+                    } else {
+                        // Usuário autenticado e autorizado
+                        document.body.classList.add('auth-ready');
+                        loadingOverlay.classList.add('fade-out');
+                        setTimeout(() => {
+                            loadingOverlay.style.display = 'none';
+                        }, 300);
+                    }
+                }
+            });
+        } catch (error) {
+            console.error('Erro na verificação de autenticação:', error);
+            showError('Erro ao verificar autenticação. Por favor, tente novamente.');
+        }
+
+        // Proteção adicional contra manipulação do DOM
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                    const body = document.body;
+                    if (!authChecked || !auth.currentUser) {
+                        body.style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        observer.observe(document.body, {
+            attributes: true,
+            attributeFilter: ['style']
+        });
+
+        // Interceptar navegação
+        window.addEventListener('popstate', () => {
+            if (!auth.currentUser) {
+                redirectToLogin('Navegação não autorizada');
+            }
+        });
+    </script>
+
+    <style>
+        body {
+            display: none;
+        }
+        .auth-error {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+    </style>
 </head>
 <body>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Carregando...</span>
+        </div>
+    </div>
+
     <div class="admin-container">
         <!-- Sidebar -->
         <nav id="sidebar" class="sidebar">
