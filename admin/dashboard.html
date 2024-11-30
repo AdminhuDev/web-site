@@ -1,41 +1,48 @@
 <!DOCTYPE html>
-<div class="container-fluid">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
+<div class="container-fluid animate-slide-in">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4">
+        <h1 class="h2 text-gradient">Dashboard</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group me-2">
-                <button type="button" class="btn btn-sm btn-outline-primary" id="refreshStats">
-                    <span class="material-symbols-rounded">refresh</span>
-                    Atualizar
-                </button>
-            </div>
+            <button type="button" class="btn btn-primary btn-icon" id="refreshStats">
+                <span class="material-symbols-rounded">refresh</span>
+                Atualizar
+            </button>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Projetos</h5>
-                    <p class="card-text display-4" id="projectCount">0</p>
+            <div class="stats-card card">
+                <div class="icon">
+                    <span class="material-symbols-rounded">code</span>
+                </div>
+                <div class="content">
+                    <div class="title">Projetos</div>
+                    <div class="value" id="projectCount">0</div>
                     <small class="text-muted">Total de projetos cadastrados</small>
                 </div>
             </div>
         </div>
         <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Habilidades</h5>
-                    <p class="card-text display-4" id="skillCount">0</p>
+            <div class="stats-card card">
+                <div class="icon">
+                    <span class="material-symbols-rounded">psychology</span>
+                </div>
+                <div class="content">
+                    <div class="title">Habilidades</div>
+                    <div class="value" id="skillCount">0</div>
                     <small class="text-muted">Total de habilidades cadastradas</small>
                 </div>
             </div>
         </div>
         <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Mensagens</h5>
-                    <p class="card-text display-4" id="messageCount">0</p>
+            <div class="stats-card card">
+                <div class="icon">
+                    <span class="material-symbols-rounded">mail</span>
+                </div>
+                <div class="content">
+                    <div class="title">Mensagens</div>
+                    <div class="value" id="messageCount">0</div>
                     <small class="text-muted">Total de mensagens recebidas</small>
                 </div>
             </div>
@@ -46,9 +53,12 @@
         <div class="col-md-6 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Últimas Mensagens</h5>
+                    <h5 class="card-title d-flex align-items-center gap-2 mb-4">
+                        <span class="material-symbols-rounded text-primary">mail</span>
+                        Últimas Mensagens
+                    </h5>
                     <div class="table-responsive">
-                        <table class="table" id="recentMessages">
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th>Nome</th>
@@ -56,7 +66,7 @@
                                     <th>Data</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="recentMessages">
                                 <!-- Preenchido via JavaScript -->
                             </tbody>
                         </table>
@@ -67,9 +77,12 @@
         <div class="col-md-6 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Projetos Recentes</h5>
+                    <h5 class="card-title d-flex align-items-center gap-2 mb-4">
+                        <span class="material-symbols-rounded text-primary">code</span>
+                        Projetos Recentes
+                    </h5>
                     <div class="table-responsive">
-                        <table class="table" id="recentProjects">
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th>Título</th>
@@ -77,7 +90,7 @@
                                     <th>Status</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="recentProjects">
                                 <!-- Preenchido via JavaScript -->
                             </tbody>
                         </table>
@@ -107,7 +120,7 @@
             // Carregar mensagens recentes
             const recentMessagesQuery = query(collection(db, 'messages'), orderBy('timestamp', 'desc'), limit(5));
             const recentMessagesSnapshot = await getDocs(recentMessagesQuery);
-            const messagesTableBody = document.querySelector('#recentMessages tbody');
+            const messagesTableBody = document.querySelector('#recentMessages');
             messagesTableBody.innerHTML = '';
 
             recentMessagesSnapshot.forEach(doc => {
@@ -124,7 +137,7 @@
             // Carregar projetos recentes
             const recentProjectsQuery = query(collection(db, 'projects'), orderBy('timestamp', 'desc'), limit(5));
             const recentProjectsSnapshot = await getDocs(recentProjectsQuery);
-            const projectsTableBody = document.querySelector('#recentProjects tbody');
+            const projectsTableBody = document.querySelector('#recentProjects');
             projectsTableBody.innerHTML = '';
 
             recentProjectsSnapshot.forEach(doc => {
@@ -133,7 +146,7 @@
                 row.innerHTML = `
                     <td>${data.title}</td>
                     <td>${data.technologies.join(', ')}</td>
-                    <td><span class="badge bg-${data.status === 'active' ? 'success' : 'secondary'}">${data.status}</span></td>
+                    <td><span class="status-badge ${data.status === 'active' ? 'new' : 'read'}">${data.status}</span></td>
                 `;
                 projectsTableBody.appendChild(row);
             });
