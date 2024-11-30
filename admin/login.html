@@ -125,7 +125,17 @@
                         showError('Erro ao redirecionar para o GitHub. Por favor, tente novamente.');
                     }
                 } else if (error.code === 'auth/popup-closed-by-user') {
-                    showError('Login cancelado. Por favor, complete o processo de autenticação.', true);
+                    try {
+                        // Tentar automaticamente o método de redirecionamento
+                        showError('Redirecionando para página de login do GitHub...', true);
+                        logEvent(analytics, 'login_attempt', {
+                            method: 'github_redirect',
+                            reason: 'popup_closed_fallback'
+                        });
+                        await signInWithRedirect(auth, githubProvider);
+                    } catch (redirectError) {
+                        showError('Erro ao redirecionar para o GitHub. Por favor, tente novamente.');
+                    }
                 } else if (error.code === 'auth/unauthorized-domain') {
                     showError('Este domínio não está autorizado para login. Por favor, contate o administrador.');
                 } else {
