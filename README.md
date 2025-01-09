@@ -2,6 +2,8 @@
 
 Portfolio profissional mostrando meus principais projetos e habilidades como Desenvolvedor Full Stack e UI/UX Designer.
 
+![Preview do Site](assets/img/image.png)
+
 ## 🚀 Tecnologias
 
 - HTML5
