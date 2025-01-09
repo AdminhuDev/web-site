@@ -281,6 +281,9 @@
     <!-- Script para controle de tema e música -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
+        // Atualiza o ano automaticamente
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = themeToggle.querySelector('.material-icons-round');
         
@@ -401,12 +404,7 @@
 
     <footer>
       <div class="container">
-        <p>{"<desenvolvido_por_AdminhuDev/>"}</p>
-        <div class="social-links">
-          <a href="https://github.com/AdminhuDev" target="_blank" rel="noopener">GitHub</a>
-          <span>•</span>
-          <a href="https://t.me/Analista_Adminhu" target="_blank" rel="noopener">Telegram</a>
-        </div>
+        <p class="made-with">Feito com <span class="heart">❤</span> por AdminhuDev</p>
       </div>
     </footer>
   </main>
