@@ -599,7 +599,7 @@ body.theme-hacker .contact-btn:hover {
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
   position: relative;
-  z-index: 2;
+  z-index: 1000;
 }
 
 .music-btn:hover {
@@ -667,18 +667,38 @@ body.theme-hacker .contact-btn:hover {
   margin: -60px -20px;
 }
 
-.music-player:hover .radio-channels {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-  pointer-events: all;
+.music-player:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 48px;
+  right: 24px;
+  width: 20px;
+  height: 102px;
+  background: var(--accent-primary);
+  filter: blur(10px);
+  opacity: 0.2;
+  animation: bubbleEffect 0.3s ease-out forwards;
+  border-radius: 10px;
+}
+
+@keyframes bubbleEffect {
+  0% {
+    transform: scaleY(0) scaleX(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scaleY(0.5) scaleX(1.2);
+  }
+  100% {
+    transform: scaleY(1) scaleX(1);
+    opacity: 0.2;
+  }
 }
 
 .radio-channels {
   position: absolute;
-  bottom: 60px;
-  right: 0;
+  bottom: 150px;
+  right: -10px;
   background: var(--blur-bg);
   backdrop-filter: blur(20px);
   border-radius: 16px;
@@ -691,15 +711,59 @@ body.theme-hacker .contact-btn:hover {
   transition: all 0.3s ease;
   box-sizing: border-box;
   pointer-events: none;
-  z-index: 1;
+}
+
+/* Triângulo do balão */
+.radio-channels::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  background: var(--blur-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  border-top: none;
+  border-left: none;
 }
 
 .music-player:hover .radio-channels {
   display: block;
   opacity: 1;
   transform: translateY(0);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2),
+              0 0 15px var(--accent-primary);
   pointer-events: all;
+  animation: popIn 0.3s ease-out forwards;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.9) translateY(10px);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05) translateY(-5px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Remove o efeito anterior de linha/bolha */
+.music-player:hover::after {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .radio-channels {
+    bottom: 160px;
+    right: -10px;
+    width: 180px;
+  }
 }
 
 .channel-option {
@@ -779,13 +843,27 @@ body.theme-hacker .contact-btn:hover {
 
 @media (max-width: 768px) {
   .radio-channels {
-    right: -10px; /* Ajusta posição em telas menores */
-    width: 180px; /* Reduz largura em telas menores */
+    bottom: 160px;
+    right: -10px;
+    width: 180px;
   }
   
-  .theme-switcher {
-    bottom: 1rem;
-    right: 1rem;
+  .music-player:hover::after {
+    height: 112px;
+  }
+  
+  @keyframes bubbleEffect {
+    0% {
+      transform: scaleY(0) scaleX(0.5);
+      opacity: 0;
+    }
+    50% {
+      transform: scaleY(0.5) scaleX(1.2);
+    }
+    100% {
+      transform: scaleY(1) scaleX(1);
+      opacity: 0.2;
+    }
   }
 }
 
