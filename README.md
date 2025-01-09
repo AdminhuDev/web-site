@@ -1,74 +1,39 @@
-# 🚀 AdminhuDev - Portfólio
+# AdminhuDev Portfolio
 
-[![GitHub](https://img.shields.io/badge/GitHub-AdminhuDev-blue?style=flat-square&logo=github)](https://github.com/AdminhuDev)
-[![Website](https://img.shields.io/badge/Website-Portfolio-green?style=flat-square&logo=google-chrome)](https://adminhudev.github.io)
-[![Telegram](https://img.shields.io/badge/Telegram-@Analista__Adminhu-blue?style=flat-square&logo=telegram)](https://t.me/Analista_Adminhu)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+Portfolio profissional mostrando meus principais projetos e habilidades como Desenvolvedor Full Stack e UI/UX Designer.
 
-> Desenvolvedor Full Stack apaixonado por transformar ideias em experiências digitais incríveis através de código limpo e design moderno.
+## 🚀 Tecnologias
 
-![Preview do Portfólio](https://cdn.pixabay.com/photo/2019/10/09/07/28/development-4536630_1280.png)
+- HTML5
+- CSS3 (Animações e Design Responsivo)
+- JavaScript (Vanilla)
+- Material Icons
+- Google Fonts
 
-## ✨ Características
+## ✨ Funcionalidades
 
-- 🎨 Design moderno e responsivo
-- 🌓 Tema claro/escuro automático
-- 🎯 Seções organizadas e intuitivas
-- 📱 Totalmente adaptável para dispositivos móveis
-- 🚀 Otimizado para performance
-- 🔒 Implementação completa de segurança
+- Design Responsivo
+- Tema Claro/Escuro
+- Player de Música Integrado
+- Animações Suaves
 
-## 🛠️ Tecnologias Utilizadas
-
-- **Frontend**
-  - HTML5
-  - CSS3
-  - JavaScript
-  - Bootstrap 5
-  - Material Icons
-
-- **Recursos**
-  - Animações suaves
-  - Navegação interativa
-  - Formulário de contato integrado
-  - Sistema de tema adaptativo
-
-## 📂 Estrutura do Projeto
+## 📦 Arquivos Principais
 
 ```
 adminhudev.github.io/
-├── index.html
-├── 404.html
-├── robots.txt
-├── sitemap.xml
-├── .htaccess
-├── assets/
-│   ├── css/
-│   │   ├── style.css
-│   │   └── admin.css
-│   └── js/
-│       ├── main.js
-│       ├── admin.js
-│       └── firebase-config.js
-└── admin/
-    ├── index.html
-    ├── login.html
-    ├── dashboard.html
-    ├── projects.html
-    ├── skills.html
-    └── contacts.html
+├── index.html              # Página principal
+└── assets/
+    └── css/
+        ├── style.css      # Estilos principais
+        └── buttons.css    # Estilos dos botões
 ```
 
-## 📞 Contato
+## 🔗 Links
 
-- Website: [adminhudev.github.io](https://adminhudev.github.io)
-- GitHub: [@AdminhuDev](https://github.com/AdminhuDev)
-- Telegram: [@Analista_Adminhu](https://t.me/Analista_Adminhu)
-
-## 📄 Licença
-
-Este projeto está protegido sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para detalhes.
+- [Site ao Vivo](https://adminhudev.github.io)
+- [GitHub](https://github.com/AdminhuDev)
+- [Telegram](https://t.me/Analista_Adminhu)
 
 ---
 
-⭐️ From [AdminhuDev](https://github.com/AdminhuDev) 
+Feito com ❤️ por AdminhuDev 

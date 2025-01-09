@@ -1,500 +1,414 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-bs-theme="dark">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="3xnkz_3hip1UHNxwP_WpjOLAorAxD_Cxm-ntQlkGekc" />
-    <meta name="description" content="AdminhuDev - Desenvolvedor Full Stack especializado em automação Python, bots Telegram e desenvolvimento web. Criando soluções modernas que combinam automação inteligente com tecnologias web avançadas.">
-    <meta name="keywords" content="automação python, telegram bot, desenvolvimento web, programação python, full stack, php, javascript, react, node.js, mysql, mongodb, desenvolvimento de bots, integração telegram, AdminhuDev">
-    <meta name="author" content="AdminhuDev">
-    
-    <!-- SEO -->
-    <meta name="robots" content="index, follow">
-    <meta name="googlebot" content="index, follow">
-    <meta name="revisit-after" content="7 days">
-    <meta name="language" content="Portuguese">
-    <meta name="geo.region" content="BR">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="AdminhuDev - Full Stack & Especialista em Automação">
-    <meta property="og:description" content="Desenvolvedor Full Stack com expertise em automação Python e Telegram. Combinando o melhor do desenvolvimento web com soluções automatizadas inteligentes.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://adminhudev.github.io">
-    <meta property="og:image" content="https://adminhudev.github.io/assets/img/og-image.jpg">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AdminhuDev - Full Stack & Especialista em Automação">
-    <meta name="twitter:description" content="Desenvolvedor Full Stack com expertise em automação Python e Telegram. Combinando o melhor do desenvolvimento web com soluções automatizadas inteligentes.">
-    <meta name="twitter:image" content="https://adminhudev.github.io/assets/img/og-image.jpg">
-    
-    <!-- Segurança -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data:; font-src 'self' https: data:;">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    
-    <!-- Preload de fontes críticas -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" as="style">
-    
-    <!-- Cache-Control para recursos estáticos -->
-    <meta http-equiv="Cache-Control" content="max-age=31536000">
-    
-    <title>AdminhuDev - Desenvolvedor Full Stack</title>
-    
-    <!-- Recursos Externos com atributos de performance -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
-          crossorigin="anonymous"
-          media="print" onload="this.media='all'">
-    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
-          media="print" onload="this.media='all'">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" 
-          rel="stylesheet"
-          media="print" onload="this.media='all'">
-    
-    <link href="./assets/css/style.css" rel="stylesheet" media="print" onload="this.media='all'">
-    
-    <!-- Font display swap para evitar FOIT -->
-    <style>
-        @font-face {
-            font-family: 'Poppins';
-            font-display: swap;
-            src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        }
-        @font-face {
-            font-family: 'Material Symbols Rounded';
-            font-display: swap;
-            src: url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0');
-        }
-    </style>
-    
-    <!-- Preload de imagens críticas -->
-    <link rel="preload" as="image" href="https://cdn.pixabay.com/photo/2019/10/09/07/28/development-4536630_1280.png">
-    
-    <!-- Fallback para carregamento de CSS -->
-    <noscript>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="./assets/css/style.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
-    </noscript>
-    
-    <link rel="canonical" href="https://adminhudev.github.io">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
+  <title>AdminhuDev - Desenvolvedor Full Stack & UI/UX Designer | Portfolio</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portfolio profissional de AdminhuDev - Desenvolvedor Full Stack e UI/UX Designer especializado em criar experiências digitais extraordinárias com código limpo e design inovador.">
+  <meta name="keywords" content="desenvolvedor full stack, ui/ux designer, desenvolvimento web, portfolio, programador, javascript, python, react, desenvolvimento de software">
+  <meta name="author" content="AdminhuDev">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://adminhudev.github.io/">
+  <meta property="og:title" content="AdminhuDev - Desenvolvedor Full Stack & UI/UX Designer">
+  <meta property="og:description" content="Portfolio profissional com projetos inovadores em desenvolvimento web e design de interface.">
+  <meta property="og:image" content="https://adminhudev.github.io/assets/img/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://adminhudev.github.io/">
+  <meta property="twitter:title" content="AdminhuDev - Desenvolvedor Full Stack & UI/UX Designer">
+  <meta property="twitter:description" content="Portfolio profissional com projetos inovadores em desenvolvimento web e design de interface.">
+  <meta property="twitter:image" content="https://adminhudev.github.io/assets/img/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://adminhudev.github.io/">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+  <!-- CSS Customizado -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
 </head>
 <body>
-    <div class="background-animation" aria-hidden="true">
-        <div class="gradient-sphere"></div>
-        <div class="gradient-sphere"></div>
-        <div class="gradient-sphere"></div>
+  <header class="navbar" role="banner">
+    <div class="container navbar-content">
+      <a href="#" class="navbar-brand" aria-label="AdminhuDev Logo">{<span>Adminhu</span>}Dev</a>
+      <nav role="navigation" aria-label="Menu principal">
+        <ul class="nav-links">
+          <li><a href="#home" aria-current="page">Início</a></li>
+          <li><a href="#projects">Projetos</a></li>
+          <li><a href="#contact">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main role="main">
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1 id="hero-title">Desenvolvedor Full Stack & UI/UX Designer</h1>
+          <p>Transformando ideias em experiências digitais extraordinárias através de código limpo e design inovador.</p>
+          <a href="#contact" class="btn btn-primary" role="button">Iniciar Projeto</a>
+        </div>
+        <div class="hero-image">
+          <img
+            src="https://cdn.pixabay.com/photo/2019/10/09/07/28/development-4536630_1280.png"
+            alt="Ilustração representando desenvolvimento de software e design"
+            width="600"
+            height="400"
+            loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <h2 id="projects-title" class="section-title">Projetos <span>{"em_destaque"}</span></h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <div class="project-icon">
+              <span class="material-icons-round">currency_exchange</span>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">// PocketOption API</h3>
+              <p class="project-description">API não oficial para a plataforma PocketOption, com funcionalidades avançadas e documentação completa. O projeto mais estrelado no GitHub.</p>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">API</span>
+                <span class="tech-tag">WebSocket</span>
+                <span class="tech-tag">Trading</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/AdminhuDev/PocketOptionAPI" class="project-link" target="_blank" rel="noopener">
+                  <span class="material-icons-round">code</span>
+                  <span>Código</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-icon">
+              <span class="material-icons-round">block</span>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">// AdminhuBlockAds</h3>
+              <p class="project-description">Bloqueador de anúncios eficiente para YouTube, desenvolvido com JavaScript e técnicas modernas de bloqueio.</p>
+              <div class="project-tech">
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Browser Extension</span>
+                <span class="tech-tag">Ad Blocking</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/AdminhuDev/AdminhuBlockAds" class="project-link" target="_blank" rel="noopener">
+                  <span class="material-icons-round">code</span>
+                  <span>Código</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-icon">
+              <span class="material-icons-round">sports_esports</span>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">// Royale.io</h3>
+              <p class="project-description">Jogo multiplayer online com gráficos modernos e jogabilidade envolvente. Desenvolvido com JavaScript e tecnologias web.</p>
+              <div class="project-tech">
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Game Dev</span>
+                <span class="tech-tag">Multiplayer</span>
+                <span class="tech-tag">WebSockets</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/AdminhuDev/royale_io" class="project-link" target="_blank" rel="noopener">
+                  <span class="material-icons-round">code</span>
+                  <span>Código</span>
+                </a>
+                <a href="https://royale-io.onrender.com" class="project-link" target="_blank" rel="noopener">
+                  <span class="material-icons-round">launch</span>
+                  <span>Demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-icon">
+              <span class="material-icons-round">movie</span>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">// TelaGo</h3>
+              <p class="project-description">Plataforma de streaming de filmes e séries com interface moderna e responsiva. Desenvolvida com JavaScript e tecnologias web modernas.</p>
+              <div class="project-tech">
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Streaming</span>
+                <span class="tech-tag">Web Development</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/AdminhuDev/TelaGo" class="project-link" target="_blank" rel="noopener">
+                  <span class="material-icons-round">code</span>
+                  <span>Código</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-icon">
+              <span class="material-icons-round">psychology</span>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">// Adminha Intelligence</h3>
+              <p class="project-description">Sistema de Inteligência Artificial para automação e análise de dados, desenvolvido em Python.</p>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">AI</span>
+                <span class="tech-tag">Automation</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/AdminhuDev/Adminha_Intelligence" class="project-link" target="_blank" rel="noopener">
+                  <span class="material-icons-round">code</span>
+                  <span>Código</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-icon">
+              <span class="material-icons-round">web</span>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">// Portfolio</h3>
+              <p class="project-description">Site pessoal com design moderno, temas dinâmicos e animações suaves. Desenvolvido com HTML, CSS e JavaScript.</p>
+              <div class="project-tech">
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/AdminhuDev/adminhudev.github.io" class="project-link" target="_blank" rel="noopener">
+                  <span class="material-icons-round">code</span>
+                  <span>Código</span>
+                </a>
+                <a href="https://adminhudev.github.io" class="project-link" target="_blank" rel="noopener">
+                  <span class="material-icons-round">launch</span>
+                  <span>Demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Vamos <span>{"colaborar"}</span>?</h2>
+        <p class="text-center">Transforme sua ideia em realidade. Vamos criar algo incrível juntos.</p>
+        <div class="contact-buttons">
+          <a href="https://t.me/Analista_Adminhu" class="contact-btn" target="_blank" rel="noopener">
+            <span class="material-icons-round">telegram</span>
+            <span>Telegram</span>
+          </a>
+          <a href="https://github.com/AdminhuDev" class="contact-btn" target="_blank" rel="noopener">
+            <span class="material-icons-round">code</span>
+            <span>GitHub</span>
+          </a>
+          <a href="mailto:edevpython@gmail.com" class="contact-btn">
+            <span class="material-icons-round">email</span>
+            <span>Email</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Theme Switcher e Music Player -->
+    <div class="theme-switcher">
+      <button class="theme-btn" id="theme-toggle" data-theme="dark">
+        <span class="material-icons-round">dark_mode</span>
+      </button>
+      <div class="music-player">
+        <button class="music-btn" id="music-toggle">
+          <span class="material-icons-round">play_arrow</span>
+        </button>
+        <div class="radio-channels">
+          <div class="channel-option active" data-url="https://stream-172.zeno.fm/1np62vf4sxhvv" data-name="Trap Brasil">
+            <span class="material-icons-round">broadcast_on_personal</span>
+            <span>Trap Brasil</span>
+          </div>
+          <div class="channel-option" data-url="https://trance.out.airtime.pro/trance_a" data-name="Trance">
+            <span class="material-icons-round">blur_on</span>
+            <span>Trance</span>
+          </div>
+          <div class="channel-option" data-url="https://live.hunter.fm/hitsbrasil_high" data-name="Hits Brasil">
+            <span class="material-icons-round">music_note</span>
+            <span>Hits Brasil</span>
+          </div>
+          <div class="channel-option" data-url="https://live.hunter.fm/pisadinha_high" data-name="Pisadinha">
+            <span class="material-icons-round">music_note</span>
+            <span>Pisadinha</span>
+          </div>
+          <div class="channel-option" data-url="https://live.hunter.fm/pop_high" data-name="Pop">
+            <span class="material-icons-round">headphones</span>
+            <span>Pop</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg fixed-top" aria-label="Navegação principal">
-        <div class="container">
-            <a class="navbar-brand" href="/" aria-label="AdminhuDev">ADMINHU<span>DEV</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
-                <span class="material-symbols-rounded">menu</span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#home" aria-current="page">
-                            <span class="material-symbols-rounded" aria-hidden="true">home</span>
-                            <span>Início</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">
-                            <span class="material-symbols-rounded" aria-hidden="true">code</span>
-                            <span>Projetos</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">
-                            <span class="material-symbols-rounded" aria-hidden="true">psychology</span>
-                            <span>Habilidades</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">
-                            <span class="material-symbols-rounded" aria-hidden="true">mail</span>
-                            <span>Contato</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/AdminhuDev" target="_blank" rel="noopener noreferrer" aria-label="Perfil no GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16" aria-hidden="true">
-                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                            </svg>
-                            <span>GitHub</span>
-                        </a>
-                    </li>
-                    <li class="nav-item ms-lg-3">
-                        <button id="theme-toggle" class="btn btn-outline" aria-label="Alternar tema escuro/claro">
-                            <span class="material-symbols-rounded">dark_mode</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
+    <!-- Audio Player -->
+    <audio id="audio-player"></audio>
+
+    <!-- Script para controle de tema e música -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('.material-icons-round');
+        
+        // Carrega o tema salvo
+        const savedTheme = localStorage.getItem('theme') || 'theme-dark';
+        document.body.className = savedTheme;
+        
+        // Atualiza o ícone baseado no tema atual
+        updateTheme(savedTheme === 'theme-light');
+
+        // Adiciona evento de clique no botão
+        themeToggle.addEventListener('click', function() {
+          const isLight = document.body.className === 'theme-dark';
+          const newTheme = isLight ? 'theme-light' : 'theme-dark';
+          
+          // Adiciona classe de animação
+          themeIcon.classList.add('switching');
+          
+          // Remove a classe após a animação
+          setTimeout(() => {
+            themeIcon.classList.remove('switching');
+          }, 500);
+
+          // Atualiza o tema
+          document.body.className = newTheme;
+          localStorage.setItem('theme', newTheme);
+          updateTheme(isLight);
+        });
+
+        function updateTheme(isLight) {
+          themeIcon.textContent = isLight ? 'light_mode' : 'dark_mode';
+          themeToggle.setAttribute('data-theme', isLight ? 'light' : 'dark');
+        }
+
+        // Player de Rádio
+        const musicBtn = document.getElementById('music-toggle');
+        const musicIcon = musicBtn.querySelector('.material-icons-round');
+        const audioPlayer = document.getElementById('audio-player');
+        const channels = document.querySelectorAll('.channel-option');
+        const musicPlayer = document.querySelector('.music-player');
+        let isPlaying = false;
+        let currentChannel = channels[0];
+        let isLoading = false; // Controle para evitar múltiplas requisições
+
+        // Função para tocar canal
+        function playChannel(channel) {
+          if (isLoading) return; // Previne múltiplas requisições
+          isLoading = true;
+          musicBtn.classList.add('loading');
+          
+          const url = channel.dataset.url;
+          audioPlayer.src = url;
+          audioPlayer.play()
+            .then(() => {
+              isPlaying = true;
+              isLoading = false;
+              musicBtn.classList.remove('loading');
+              musicBtn.classList.add('playing');
+              currentChannel.classList.remove('active');
+              channel.classList.add('active');
+              currentChannel = channel;
+              musicIcon.textContent = 'pause';
+            })
+            .catch(error => {
+              console.error('Erro ao tocar rádio:', error);
+              isPlaying = false;
+              isLoading = false;
+              musicBtn.classList.remove('loading');
+              musicBtn.classList.remove('playing');
+              musicIcon.textContent = 'play_arrow';
+            });
+        }
+
+        // Função para pausar
+        function pauseChannel() {
+          if (isLoading) return; // Previne pausa durante carregamento
+          audioPlayer.pause();
+          isPlaying = false;
+          musicBtn.classList.remove('playing');
+          musicIcon.textContent = 'play_arrow';
+        }
+
+        // Evento de clique no botão principal
+        musicBtn.addEventListener('click', function(e) {
+          e.stopPropagation(); // Impede que o clique se propague
+          if (isPlaying) {
+            pauseChannel();
+          } else {
+            playChannel(currentChannel);
+          }
+        });
+
+        // Eventos de clique nos canais
+        channels.forEach(channel => {
+          channel.addEventListener('click', (e) => {
+            e.stopPropagation(); // Impede que o clique se propague
+            if (currentChannel === channel && isPlaying) {
+              pauseChannel();
+            } else {
+              playChannel(channel);
+            }
+          });
+        });
+
+        // Fecha o menu ao clicar fora
+        document.addEventListener('click', () => {
+          if (musicPlayer.matches(':hover')) return; // Não fecha se o mouse estiver sobre o player
+          musicPlayer.classList.remove('show-channels');
+        });
+
+        // Tratamento de erros do áudio
+        audioPlayer.addEventListener('error', () => {
+          musicBtn.classList.remove('playing');
+          isPlaying = false;
+        });
+      });
+    </script>
+
+    <footer>
+      <div class="container">
+        <p>{"<desenvolvido_por_AdminhuDev/>"}</p>
+        <div class="social-links">
+          <a href="https://github.com/AdminhuDev" target="_blank" rel="noopener">GitHub</a>
+          <span>•</span>
+          <a href="https://t.me/Analista_Adminhu" target="_blank" rel="noopener">Telegram</a>
         </div>
-    </nav>
-
-    <main>
-        <section id="home" class="hero">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="hero-content">
-                            <h1 class="hero-title">AdminhuDev</h1>
-                            <p class="hero-subtitle">
-                                Desenvolvedor Full Stack apaixonado por transformar ideias em experiências digitais incríveis através de código limpo e design moderno.
-                            </p>
-                            <div class="hero-cta">
-                                <a href="#contact" class="btn btn-primary">
-                                    <span class="material-symbols-rounded" aria-hidden="true">mail</span>
-                                    Entrar em Contato
-                                </a>
-                                <a href="https://github.com/AdminhuDev" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16" aria-hidden="true">
-                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                    </svg>
-                                    GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="hero-image">
-                            <img src="https://cdn.pixabay.com/photo/2019/10/09/07/28/development-4536630_1280.png" 
-                                 alt="Ilustração de um desenvolvedor Full Stack trabalhando" 
-                                 class="img-fluid animate-float"
-                                 width="600"
-                                 height="400"
-                                 loading="eager"
-                                 decoding="async"
-                                 fetchpriority="high">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="section">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="section-title">Projetos</h2>
-                    <p class="section-subtitle">Conheça alguns dos meus trabalhos mais recentes e as tecnologias utilizadas.</p>
-                </div>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-4">
-                        <article class="card project-card h-100">
-                            <div class="card-img-wrapper">
-                                <img src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_1280.png" 
-                                     class="card-img-top" 
-                                     alt="Screenshot do projeto TelaGo"
-                                     width="400"
-                                     height="300"
-                                     loading="lazy">
-                                <span class="badge bg-primary featured-badge">
-                                    <span class="material-symbols-rounded" aria-hidden="true">star</span>
-                                    Destaque
-                                </span>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title">TelaGo</h3>
-                                <p class="card-text">Site programado para melhorar abilidades, semelhante a Netflix, o TelaGo tem como seu diferencial ter lançamentos mais recentes do cinema!</p>
-                                <div class="technologies-list mb-3">
-                                    <span class="tech-badge">HTML</span>
-                                    <span class="tech-badge">CSS</span>
-                                    <span class="tech-badge">JavaScript</span>
-                                    <span class="tech-badge">Bootstrap</span>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    
-                    <div class="col-md-6 col-lg-4">
-                        <article class="card project-card h-100">
-                            <div class="card-img-wrapper">
-                                <img src="https://cdn.pixabay.com/photo/2016/11/30/20/58/programming-1873854_1280.png" 
-                                     class="card-img-top" 
-                                     alt="Screenshot do Portfolio Pessoal"
-                                     width="400"
-                                     height="300"
-                                     loading="lazy">
-                                <span class="badge bg-primary featured-badge">
-                                    <span class="material-symbols-rounded" aria-hidden="true">star</span>
-                                    Destaque
-                                </span>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title">Portfolio Pessoal</h3>
-                                <p class="card-text">Meu site pessoal e portfolio profissional desenvolvido com PHP, MySQL e Bootstrap</p>
-                                <div class="technologies-list mb-3">
-                                    <span class="tech-badge">PHP</span>
-                                    <span class="tech-badge">MySQL</span>
-                                    <span class="tech-badge">Bootstrap</span>
-                                    <span class="tech-badge">HTML</span>
-                                    <span class="tech-badge">CSS</span>
-                                    <span class="tech-badge">JavaScript</span>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <article class="card project-card h-100">
-                            <div class="card-img-wrapper">
-                                <img src="https://cdn.pixabay.com/photo/2016/11/19/22/52/coding-1841550_1280.jpg" 
-                                     class="card-img-top" 
-                                     alt="Ilustração da API REST"
-                                     width="400"
-                                     height="300"
-                                     loading="lazy">
-                                <span class="badge bg-primary featured-badge">
-                                    <span class="material-symbols-rounded" aria-hidden="true">star</span>
-                                    Destaque
-                                </span>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title">API REST</h3>
-                                <p class="card-text">API RESTful desenvolvida com Node.js e Express para integração de sistemas</p>
-                                <div class="technologies-list mb-3">
-                                    <span class="tech-badge">Node.js</span>
-                                    <span class="tech-badge">Express</span>
-                                    <span class="tech-badge">MongoDB</span>
-                                    <span class="tech-badge">Docker</span>
-                                    <span class="tech-badge">Jest</span>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="section">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="section-title">Habilidades</h2>
-                    <p class="section-subtitle">Tecnologias e ferramentas que utilizo no desenvolvimento de projetos.</p>
-                </div>
-                <div class="row g-4">
-                    <div class="col-12 mb-4">
-                        <h3 class="category-title">Frontend</h3>
-                        <div class="row g-4">
-                            <div class="col-md-6 col-lg-4">
-                                <div class="card skill-card">
-                                    <div class="card-body">
-                                        <div class="skill-icon">
-                                            <span class="material-symbols-rounded" aria-hidden="true">html</span>
-                                        </div>
-                                        <h4 class="skill-title">HTML/CSS</h4>
-                                        <div class="progress" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 95%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="card skill-card">
-                                    <div class="card-body">
-                                        <div class="skill-icon">
-                                            <span class="material-symbols-rounded" aria-hidden="true">javascript</span>
-                                        </div>
-                                        <h4 class="skill-title">JavaScript</h4>
-                                        <div class="progress" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 85%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="card skill-card">
-                                    <div class="card-body">
-                                        <div class="skill-icon">
-                                            <span class="material-symbols-rounded" aria-hidden="true">code_blocks</span>
-                                        </div>
-                                        <h4 class="skill-title">React</h4>
-                                        <div class="progress" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 80%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 mb-4">
-                        <h3 class="category-title">Backend</h3>
-                        <div class="row g-4">
-                            <div class="col-md-6 col-lg-4">
-                                <div class="card skill-card">
-                                    <div class="card-body">
-                                        <div class="skill-icon">
-                                            <span class="material-symbols-rounded" aria-hidden="true">code</span>
-                                        </div>
-                                        <h4 class="skill-title">PHP/Laravel</h4>
-                                        <div class="progress" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 85%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="card skill-card">
-                                    <div class="card-body">
-                                        <div class="skill-icon">
-                                            <span class="material-symbols-rounded" aria-hidden="true">code_blocks</span>
-                                        </div>
-                                        <h4 class="skill-title">Node.js</h4>
-                                        <div class="progress" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 75%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="card skill-card">
-                                    <div class="card-body">
-                                        <div class="skill-icon">
-                                            <span class="material-symbols-rounded" aria-hidden="true">database</span>
-                                        </div>
-                                        <h4 class="skill-title">MySQL/MongoDB</h4>
-                                        <div class="progress" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 80%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 mb-4">
-                        <h3 class="category-title">DevOps & Outros</h3>
-                        <div class="row g-4">
-                            <div class="col-md-6 col-lg-4">
-                                <div class="card skill-card">
-                                    <div class="card-body">
-                                        <div class="skill-icon">
-                                            <span class="material-symbols-rounded" aria-hidden="true">terminal</span>
-                                        </div>
-                                        <h4 class="skill-title">Docker</h4>
-                                        <div class="progress" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 70%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="card skill-card">
-                                    <div class="card-body">
-                                        <div class="skill-icon">
-                                            <span class="material-symbols-rounded" aria-hidden="true">merge</span>
-                                        </div>
-                                        <h4 class="skill-title">Git</h4>
-                                        <div class="progress" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 85%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="card skill-card">
-                                    <div class="card-body">
-                                        <div class="skill-icon">
-                                            <span class="material-symbols-rounded" aria-hidden="true">code</span>
-                                        </div>
-                                        <h4 class="skill-title">Python</h4>
-                                        <div class="progress" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 90%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="section-title">Contato</h2>
-                    <p class="section-subtitle">Tem um projeto em mente? Vamos conversar!</p>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <form id="contactForm" class="contact-form" action="https://formsubmit.co/joao.fontoraa@gmail.com" method="POST">
-                                    <div class="row g-4">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="name" class="form-label">Nome</label>
-                                                <input type="text" id="name" name="name" class="form-control" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="email" class="form-label">E-mail</label>
-                                                <input type="email" id="email" name="email" class="form-control" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="message" class="form-label">Mensagem</label>
-                                                <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="_next" value="https://adminhudev.github.io">
-                                        <input type="hidden" name="_subject" value="Novo contato do Portfolio!">
-                                        <input type="hidden" name="_template" value="table">
-                                        <div class="col-12">
-                                            <button type="submit" class="btn btn-primary">
-                                                <span class="material-symbols-rounded" aria-hidden="true">send</span>
-                                                Enviar Mensagem
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom text-center mt-4">
-                <p class="mb-0">&copy; 2024 AdminhuDev. Todos os direitos reservados.</p>
-            </div>
-        </div>
+      </div>
     </footer>
-
-    <button id="back-to-top" class="btn-back-to-top" aria-label="Voltar ao topo">
-        <span class="material-symbols-rounded" aria-hidden="true">arrow_upward</span>
-    </button>
-
-    <!-- Scripts carregados de forma otimizada -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
-            defer 
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
-            crossorigin="anonymous"></script>
-    
-    <!-- Firebase -->
-    <script type="module" src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js"></script>
-    <script type="module" src="/assets/js/firebase-config.js"></script>
-    
-    <!-- Site Scripts -->
-    <script type="module" src="/assets/js/main.js"></script>
+  </main>
 </body>
 </html>
