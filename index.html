@@ -56,13 +56,18 @@
   <header class="navbar" role="banner">
     <div class="container navbar-content">
       <a href="#" class="navbar-brand" aria-label="AdminhuDev Logo">{<span>Adminhu</span>}Dev</a>
-      <nav role="navigation" aria-label="Menu principal">
+      <nav role="navigation" aria-label="Menu principal" class="nav-menu">
         <ul class="nav-links">
           <li><a href="#home" aria-current="page">Início</a></li>
           <li><a href="#projects">Projetos</a></li>
           <li><a href="#contact">Contato</a></li>
         </ul>
       </nav>
+      <div class="mobile-controls">
+        <button class="menu-toggle control-btn" aria-label="Abrir menu" aria-expanded="false">
+          <span class="material-icons-round">menu</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -402,6 +407,54 @@
         audioPlayer.addEventListener('error', () => {
           musicBtn.classList.remove('playing');
           isPlaying = false;
+        });
+
+        // Menu Mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        // Configuração inicial dos ícones do menu
+        const menuIcons = {
+          'Início': 'home',
+          'Projetos': 'code',
+          'Contato': 'mail'
+        };
+
+        // Função para adicionar ícones ao menu
+        function setupMenuIcons() {
+          navLinks.forEach(link => {
+            const text = link.textContent.trim();
+            const icon = menuIcons[text];
+            if (icon) {
+              link.innerHTML = `<span class="material-icons-round">${icon}</span>${text}`;
+            }
+          });
+        }
+
+        // Configurar ícones inicialmente
+        setupMenuIcons();
+
+        menuToggle.addEventListener('click', () => {
+          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', !isExpanded);
+          navMenu.classList.toggle('active');
+        });
+
+        // Fecha menu ao clicar em um link
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+
+        // Fecha menu ao clicar fora
+        document.addEventListener('click', (e) => {
+          if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+            navMenu.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
         });
       });
     </script>
