@@ -179,6 +179,9 @@ body {
   width: 100%;
   height: 100%;
   background: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   opacity: 0.1;
   filter: blur(150px);
 }
@@ -220,6 +223,7 @@ body {
   font-weight: 700;
   margin-bottom: 1rem;
   background: var(--gradient);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1.2;
