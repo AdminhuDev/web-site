@@ -188,16 +188,30 @@
   }
 
   .contact-buttons {
-    flex-direction: column;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    width: auto;
+    max-width: none;
+    margin: 2rem auto;
   }
 
   .contact-btn {
-    width: 100%;
-    justify-content: center;
+    width: auto;
+    min-width: unset;
     padding: 1rem;
+    border-radius: 50%;
+    aspect-ratio: 1;
+  }
+
+  .contact-btn span:not(.material-icons-round) {
+    display: none;
+  }
+
+  .contact-btn .material-icons-round {
+    margin: 0;
+    font-size: 1.5rem;
   }
 
   .theme-switcher {
@@ -225,14 +239,14 @@
   }
 
   .contact-buttons {
-    max-width: 250px;
+    gap: 0.75rem;
   }
 
   .contact-btn {
-    font-size: 0.9rem;
+    padding: 0.875rem;
   }
 
   .contact-btn .material-icons-round {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 } 
