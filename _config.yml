@@ -1,0 +1,38 @@
+lsi: false
+safe: true
+source: .
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
+
+# Configurações de compressão
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
+  startings: [html, head, body]
+  blanklines: false
+  profile: false
+
+# Configurações de cache
+exclude:
+  - README.md
+  - LICENSE
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+
+# Configurações de otimização
+plugins:
+  - jekyll-minifier
+
+# Configurações do jekyll-minifier
+jekyll-minifier:
+  compress_css: true
+  compress_javascript: true
+  compress_json: true
+  exclude: ['*.min.js', '*.min.css'] 
