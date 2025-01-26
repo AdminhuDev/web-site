@@ -1,475 +1,274 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
-  <title>AdminhuDev - Desenvolvedor Full Stack & UI/UX Designer | Portfolio</title>
-  
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Portfolio profissional de AdminhuDev - Desenvolvedor Full Stack e UI/UX Designer especializado em criar experiências digitais extraordinárias com código limpo e design inovador.">
-  <meta name="keywords" content="desenvolvedor full stack, ui/ux designer, desenvolvimento web, portfolio, programador, javascript, python, react, desenvolvimento de software">
-  <meta name="author" content="AdminhuDev">
-  <meta name="robots" content="index, follow">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://adminhudev.github.io/">
-  <meta property="og:title" content="AdminhuDev - Desenvolvedor Full Stack & UI/UX Designer">
-  <meta property="og:description" content="Portfolio profissional com projetos inovadores em desenvolvimento web e design de interface.">
-  <meta property="og:image" content="https://adminhudev.github.io/assets/img/image.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- SEO Meta Tags -->
+    <title>AdminhuDev - Desenvolvedor Full Stack | Especialista em Soluções Digitais</title>
+    <meta name="description" content="Desenvolvedor Full Stack especializado em Python, Node.js, React e tecnologias cloud. +5 anos de experiência transformando ideias em soluções digitais inovadoras.">
+    <meta name="keywords" content="desenvolvedor full stack, programador, python, node.js, react, aws, docker, desenvolvimento web, programação, tecnologia, soluções digitais">
+    <meta name="author" content="AdminhuDev">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adminhudev.site/">
+    <meta property="og:title" content="AdminhuDev - Desenvolvedor Full Stack | Especialista em Soluções Digitais">
+    <meta property="og:description" content="Desenvolvedor Full Stack especializado em Python, Node.js, React e tecnologias cloud. +5 anos de experiência transformando ideias em soluções digitais inovadoras.">
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://adminhudev.github.io/">
-  <meta property="twitter:title" content="AdminhuDev - Desenvolvedor Full Stack & UI/UX Designer">
-  <meta property="twitter:description" content="Portfolio profissional com projetos inovadores em desenvolvimento web e design de interface.">
-  <meta property="twitter:image" content="https://adminhudev.github.io/assets/img/image.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://adminhudev.site/">
+    <meta property="twitter:title" content="AdminhuDev - Desenvolvedor Full Stack | Especialista em Soluções Digitais">
+    <meta property="twitter:description" content="Desenvolvedor Full Stack especializado em Python, Node.js, React e tecnologias cloud. +5 anos de experiência transformando ideias em soluções digitais inovadoras.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://adminhudev.site/">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/img/favicon.png">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://adminhudev.github.io/">
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;600&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;600&display=swap" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;600&display=swap">
-  </noscript>
-
-  <!-- Material Icons -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
-  </noscript>
-
-  <!-- CSS Customizado -->
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/buttons.css">
-</head>
-<body>
-  <header class="navbar" role="banner">
-    <div class="container navbar-content">
-      <a href="#" class="navbar-brand" aria-label="AdminhuDev Logo">{<span>Adminhu</span>}Dev</a>
-      <nav role="navigation" aria-label="Menu principal" class="nav-menu">
-        <ul class="nav-links">
-          <li><a href="#home" aria-current="page">Início</a></li>
-          <li><a href="#projects">Projetos</a></li>
-          <li><a href="#contact">Contato</a></li>
-        </ul>
-      </nav>
-      <div class="mobile-controls">
-        <button class="menu-toggle control-btn" aria-label="Abrir menu" aria-expanded="false">
-          <span class="material-icons-round">menu</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <main role="main">
-    <section id="home" class="hero" aria-labelledby="hero-title">
-      <div class="container hero-content">
-        <div class="hero-text">
-          <h1 id="hero-title">Desenvolvedor Full Stack & UI/UX Designer</h1>
-          <p>Transformando ideias em experiências digitais extraordinárias através de código limpo e design inovador.</p>
-          <a href="#contact" class="btn btn-primary" role="button">Iniciar Projeto</a>
-        </div>
-        <div class="hero-image">
-          <img
-            src="https://cdn.pixabay.com/photo/2019/10/09/07/28/development-4536630_1280.png"
-            alt="Ilustração representando desenvolvimento de software e design"
-            width="600"
-            height="400">
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="projects" aria-labelledby="projects-title">
-      <div class="container">
-        <h2 id="projects-title" class="section-title">Projetos <span>{"em_destaque"}</span></h2>
-        <div class="project-grid">
-          <div class="project-card">
-            <div class="project-icon">
-              <span class="material-icons-round">currency_exchange</span>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">// PocketOption API</h3>
-              <p class="project-description">API não oficial para a plataforma PocketOption, com funcionalidades avançadas e documentação completa. O projeto mais estrelado no GitHub.</p>
-              <div class="project-tech">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">API</span>
-                <span class="tech-tag">WebSocket</span>
-                <span class="tech-tag">Trading</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/AdminhuDev/PocketOptionAPI" class="project-link" target="_blank" rel="noopener">
-                  <span class="material-icons-round">code</span>
-                  <span>Código</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-icon">
-              <span class="material-icons-round">block</span>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">// AdminhuBlockAds</h3>
-              <p class="project-description">Bloqueador de anúncios eficiente para YouTube, desenvolvido com JavaScript e técnicas modernas de bloqueio.</p>
-              <div class="project-tech">
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">Browser Extension</span>
-                <span class="tech-tag">Ad Blocking</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/AdminhuDev/AdminhuBlockAds" class="project-link" target="_blank" rel="noopener">
-                  <span class="material-icons-round">code</span>
-                  <span>Código</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-icon">
-              <span class="material-icons-round">sports_esports</span>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">// Royale.io</h3>
-              <p class="project-description">Jogo multiplayer online com gráficos modernos e jogabilidade envolvente. Desenvolvido com JavaScript e tecnologias web.</p>
-              <div class="project-tech">
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">Game Dev</span>
-                <span class="tech-tag">Multiplayer</span>
-                <span class="tech-tag">WebSockets</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/AdminhuDev/royale_io" class="project-link" target="_blank" rel="noopener">
-                  <span class="material-icons-round">code</span>
-                  <span>Código</span>
-                </a>
-                <a href="https://royale-io.onrender.com" class="project-link" target="_blank" rel="noopener">
-                  <span class="material-icons-round">launch</span>
-                  <span>Demo</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-icon">
-              <span class="material-icons-round">movie</span>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">// TelaGo</h3>
-              <p class="project-description">Plataforma de streaming de filmes e séries com interface moderna e responsiva. Desenvolvida com JavaScript e tecnologias web modernas.</p>
-              <div class="project-tech">
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">Streaming</span>
-                <span class="tech-tag">Web Development</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/AdminhuDev/TelaGo" class="project-link" target="_blank" rel="noopener">
-                  <span class="material-icons-round">code</span>
-                  <span>Código</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-icon">
-              <span class="material-icons-round">psychology</span>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">// Adminha Intelligence</h3>
-              <p class="project-description">Sistema de Inteligência Artificial para automação e análise de dados, desenvolvido em Python.</p>
-              <div class="project-tech">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">AI</span>
-                <span class="tech-tag">Automation</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/AdminhuDev/Adminha_Intelligence" class="project-link" target="_blank" rel="noopener">
-                  <span class="material-icons-round">code</span>
-                  <span>Código</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-icon">
-              <span class="material-icons-round">web</span>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">// Portfolio</h3>
-              <p class="project-description">Site pessoal com design moderno, temas dinâmicos e animações suaves. Desenvolvido com HTML, CSS e JavaScript.</p>
-              <div class="project-tech">
-                <span class="tech-tag">HTML</span>
-                <span class="tech-tag">CSS</span>
-                <span class="tech-tag">JavaScript</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/AdminhuDev/adminhudev.github.io" class="project-link" target="_blank" rel="noopener">
-                  <span class="material-icons-round">code</span>
-                  <span>Código</span>
-                </a>
-                <a href="https://adminhudev.github.io" class="project-link" target="_blank" rel="noopener">
-                  <span class="material-icons-round">launch</span>
-                  <span>Demo</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="contact">
-      <div class="container">
-        <h2 class="section-title">Vamos <span>{"colaborar"}</span>?</h2>
-        <p class="text-center">Transforme sua ideia em realidade. Vamos criar algo incrível juntos.</p>
-        <div class="contact-buttons">
-          <a href="https://t.me/Analista_Adminhu" class="contact-btn" target="_blank" rel="noopener">
-            <span class="material-icons-round">telegram</span>
-            <span>Telegram</span>
-          </a>
-          <a href="https://github.com/AdminhuDev" class="contact-btn" target="_blank" rel="noopener">
-            <span class="material-icons-round">code</span>
-            <span>GitHub</span>
-          </a>
-          <a href="mailto:edevpython@gmail.com" class="contact-btn">
-            <span class="material-icons-round">email</span>
-            <span>Email</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Theme Switcher e Music Player -->
-    <div class="theme-switcher">
-      <button class="theme-btn" id="theme-toggle" data-theme="dark">
-        <span class="material-icons-round">dark_mode</span>
-      </button>
-      <div class="music-player">
-        <button class="music-btn" id="music-toggle">
-          <span class="material-icons-round">play_arrow</span>
-        </button>
-        <div class="radio-channels">
-          <div class="channel-option active" data-url="https://stream-172.zeno.fm/1np62vf4sxhvv" data-name="Trap Brasil">
-            <span class="material-icons-round">broadcast_on_personal</span>
-            <span>Trap Brasil</span>
-          </div>
-          <div class="channel-option" data-url="https://trance.out.airtime.pro/trance_a" data-name="Trance">
-            <span class="material-icons-round">blur_on</span>
-            <span>Trance</span>
-          </div>
-          <div class="channel-option" data-url="https://live.hunter.fm/hitsbrasil_high" data-name="Hits Brasil">
-            <span class="material-icons-round">music_note</span>
-            <span>Hits Brasil</span>
-          </div>
-          <div class="channel-option" data-url="https://live.hunter.fm/pisadinha_high" data-name="Pisadinha">
-            <span class="material-icons-round">music_note</span>
-            <span>Pisadinha</span>
-          </div>
-          <div class="channel-option" data-url="https://live.hunter.fm/pop_high" data-name="Pop">
-            <span class="material-icons-round">headphones</span>
-            <span>Pop</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Audio Player -->
-    <audio id="audio-player"></audio>
-
-    <!-- Script para controle de tema e música -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = themeToggle.querySelector('.material-icons-round');
-        
-        // Carrega o tema salvo
-        const savedTheme = localStorage.getItem('theme') || 'theme-dark';
-        document.body.className = savedTheme;
-        
-        // Atualiza o ícone baseado no tema atual
-        updateTheme(savedTheme === 'theme-light');
-
-        // Adiciona evento de clique no botão
-        themeToggle.addEventListener('click', function() {
-          const isLight = document.body.className === 'theme-dark';
-          const newTheme = isLight ? 'theme-light' : 'theme-dark';
-          
-          // Adiciona classe de animação
-          themeIcon.classList.add('switching');
-          
-          // Remove a classe após a animação
-          setTimeout(() => {
-            themeIcon.classList.remove('switching');
-          }, 500);
-
-          // Atualiza o tema
-          document.body.className = newTheme;
-          localStorage.setItem('theme', newTheme);
-          updateTheme(isLight);
-        });
-
-        function updateTheme(isLight) {
-          themeIcon.textContent = isLight ? 'light_mode' : 'dark_mode';
-          themeToggle.setAttribute('data-theme', isLight ? 'light' : 'dark');
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "name": "AdminhuDev",
+        "jobTitle": "Desenvolvedor Full Stack",
+        "description": "Desenvolvedor Full Stack especializado em Python, Node.js, React e tecnologias cloud",
+        "url": "https://adminhudev.site",
+        "sameAs": [
+            "https://github.com/adminhudev",
+            "https://linkedin.com/in/adminhudev",
+            "https://t.me/Analista_Adminhu"
+        ],
+        "knowsAbout": [
+            "Python",
+            "Node.js",
+            "React",
+            "AWS",
+            "Docker",
+            "MongoDB",
+            "SQL",
+            "Desenvolvimento Web",
+            "Full Stack Development"
+        ],
+        "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Desenvolvedor Full Stack",
+            "occupationLocation": {
+                "@type": "Country",
+                "name": "Brasil"
+            },
+            "estimatedSalary": {
+                "@type": "MonetaryAmountDistribution",
+                "currency": "BRL",
+                "duration": "P1Y",
+                "percentile10": "60000",
+                "percentile50": "120000",
+                "percentile90": "180000"
+            },
+            "skills": [
+                "Python",
+                "Node.js",
+                "React",
+                "AWS",
+                "Docker",
+                "MongoDB",
+                "SQL",
+                "API Development",
+                "Cloud Computing"
+            ]
         }
-
-        // Player de Rádio
-        const musicBtn = document.getElementById('music-toggle');
-        const musicIcon = musicBtn.querySelector('.material-icons-round');
-        const audioPlayer = document.getElementById('audio-player');
-        const channels = document.querySelectorAll('.channel-option');
-        const musicPlayer = document.querySelector('.music-player');
-        let isPlaying = false;
-        let currentChannel = channels[0];
-        let isLoading = false; // Controle para evitar múltiplas requisições
-
-        // Função para tocar canal
-        function playChannel(channel) {
-          if (isLoading) return; // Previne múltiplas requisições
-          isLoading = true;
-          musicBtn.classList.add('loading');
-          
-          const url = channel.dataset.url;
-          audioPlayer.src = url;
-          audioPlayer.play()
-            .then(() => {
-              isPlaying = true;
-              isLoading = false;
-              musicBtn.classList.remove('loading');
-              musicBtn.classList.add('playing');
-              currentChannel.classList.remove('active');
-              channel.classList.add('active');
-              currentChannel = channel;
-              musicIcon.textContent = 'pause';
-            })
-            .catch(error => {
-              console.error('Erro ao tocar rádio:', error);
-              isPlaying = false;
-              isLoading = false;
-              musicBtn.classList.remove('loading');
-              musicBtn.classList.remove('playing');
-              musicIcon.textContent = 'play_arrow';
-            });
-        }
-
-        // Função para pausar
-        function pauseChannel() {
-          if (isLoading) return; // Previne pausa durante carregamento
-          audioPlayer.pause();
-          isPlaying = false;
-          musicBtn.classList.remove('playing');
-          musicIcon.textContent = 'play_arrow';
-        }
-
-        // Evento de clique no botão principal
-        musicBtn.addEventListener('click', function(e) {
-          e.stopPropagation(); // Impede que o clique se propague
-          if (isPlaying) {
-            pauseChannel();
-          } else {
-            playChannel(currentChannel);
-          }
-        });
-
-        // Eventos de clique nos canais
-        channels.forEach(channel => {
-          channel.addEventListener('click', (e) => {
-            e.stopPropagation(); // Impede que o clique se propague
-            if (currentChannel === channel && isPlaying) {
-              pauseChannel();
-            } else {
-              playChannel(channel);
-            }
-          });
-        });
-
-        // Fecha o menu ao clicar fora
-        document.addEventListener('click', () => {
-          if (musicPlayer.matches(':hover')) return; // Não fecha se o mouse estiver sobre o player
-          musicPlayer.classList.remove('show-channels');
-        });
-
-        // Tratamento de erros do áudio
-        audioPlayer.addEventListener('error', () => {
-          musicBtn.classList.remove('playing');
-          isPlaying = false;
-        });
-
-        // Menu Mobile
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        const navLinks = document.querySelectorAll('.nav-links a');
-
-        // Configuração inicial dos ícones do menu
-        const menuIcons = {
-          'Início': 'home',
-          'Projetos': 'code',
-          'Contato': 'mail'
-        };
-
-        // Função para adicionar ícones ao menu
-        function setupMenuIcons() {
-          navLinks.forEach(link => {
-            const text = link.textContent.trim();
-            const icon = menuIcons[text];
-            if (icon) {
-              link.innerHTML = `<span class="material-icons-round">${icon}</span>${text}`;
-            }
-          });
-        }
-
-        // Configurar ícones inicialmente
-        setupMenuIcons();
-
-        menuToggle.addEventListener('click', () => {
-          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-          menuToggle.setAttribute('aria-expanded', !isExpanded);
-          navMenu.classList.toggle('active');
-        });
-
-        // Fecha menu ao clicar em um link
-        navLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          });
-        });
-
-        // Fecha menu ao clicar fora
-        document.addEventListener('click', (e) => {
-          if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-            navMenu.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          }
-        });
-      });
+    }
     </script>
 
-    <footer>
-      <div class="container">
-        <p>{"<desenvolvido_por_AdminhuDev/>"}</p>
-        <div class="social-links">
-          <a href="https://github.com/AdminhuDev" target="_blank" rel="noopener">GitHub</a>
-          <span>•</span>
-          <a href="https://t.me/Analista_Adminhu" target="_blank" rel="noopener">Telegram</a>
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <!-- Navegação Lateral -->
+    <div class="page-nav">
+        <div class="nav-dot active" data-section="0"></div>
+        <div class="nav-dot" data-section="1"></div>
+    </div>
+
+    <!-- Seção Hero -->
+    <section class="hero-section" id="home">
+        <div class="background-gradient"></div>
+        <div class="content-wrapper">
+            <div class="hero-content-wrapper">
+                <div class="profile-content">
+                    <span class="tag">FULL STACK DEVELOPER</span>
+                    <h1 class="profile-title">{AdminhuDev}</h1>
+                    <p class="profile-description">
+                        Transformando ideias em soluções digitais inovadoras com código limpo e eficiente.
+                    </p>
+                    <div class="tech-stack">
+                        <div class="tech-icon floating"><i class="fab fa-css3-alt"></i></div>
+                        <div class="tech-icon floating"><i class="fab fa-node-js"></i></div>
+                        <div class="tech-icon floating"><i class="fab fa-python"></i></div>
+                        <div class="tech-icon floating"><i class="fab fa-aws"></i></div>
+                        <div class="tech-icon floating"><i class="fab fa-docker"></i></div>
+                        <div class="tech-icon floating"><i class="fas fa-database"></i></div>
+                    </div>
+                </div>
+
+                <!-- Player de Música -->
+                <div class="music-player">
+                    <h3 class="radio-title">Trap Brasil</h3>
+                    
+                    <button class="music-btn" id="music-toggle">
+                        <span class="material-icons-round">play_arrow</span>
+                    </button>
+
+                    <div class="radio-channels">
+                        <div class="channel-option active" data-url="https://stream-172.zeno.fm/1np62vf4sxhvv">
+                            <span class="material-icons-round">radio</span>
+                            <span>Trap Brasil</span>
+                        </div>
+                        <div class="channel-option" data-url="https://trance.out.airtime.pro/trance_a">
+                            <span class="material-icons-round">blur_on</span>
+                            <span>Trance</span>
+                        </div>
+                        <div class="channel-option" data-url="https://live.hunter.fm/hitsbrasil_high">
+                            <span class="material-icons-round">music_note</span>
+                            <span>Hits Brasil</span>
+                        </div>
+                        <div class="channel-option" data-url="https://live.hunter.fm/pisadinha_high">
+                            <span class="material-icons-round">queue_music</span>
+                            <span>Pisadinha</span>
+                        </div>
+                        <div class="channel-option" data-url="https://live.hunter.fm/pop_high">
+                            <span class="material-icons-round">headphones</span>
+                            <span>Pop</span>
+                        </div>
+                    </div>
+
+                    <div class="volume-control">
+                        <span class="material-icons-round volume-icon">volume_up</span>
+                        <input type="range" id="volume-slider" min="0" max="100" value="100">
+                    </div>
+                </div>
+            </div>
         </div>
-        <p class="made-with-love">Feito com <span class="heart">❤️</span> por AdminhuDev</p>
-      </div>
+        <a href="#stats" class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+        <audio id="audio-player"></audio>
+    </section>
+
+    <!-- Seção de Estatísticas -->
+    <section class="stats-section" id="stats">
+        <div class="content-wrapper">
+            <div class="grid-container">
+                <!-- Card de Habilidades -->
+                <div class="card graph-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Habilidades & Tecnologias</h2>
+                        <div class="expand-icon">
+                            <i class="fas fa-arrow-up-right"></i>
+                        </div>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 98%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 98%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>SQL</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cards de Estatísticas -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Experiência</h2>
+                        <div class="expand-icon">
+                            <i class="fas fa-arrow-up-right"></i>
+                        </div>
+                    </div>
+                    <div class="stats-value">5+</div>
+                    <div class="stats-label">Anos de desenvolvimento</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Projetos Entregues</h2>
+                        <div class="expand-icon">
+                            <i class="fas fa-arrow-up-right"></i>
+                        </div>
+                    </div>
+                    <div class="stats-value">50+</div>
+                    <div class="stats-label">Projetos completados com sucesso</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Stack Tecnológico</h2>
+                        <div class="expand-icon">
+                            <i class="fas fa-arrow-up-right"></i>
+                        </div>
+                    </div>
+                    <div class="stats-value">10+</div>
+                    <div class="stats-label">Tecnologias dominadas</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Clientes Satisfeitos</h2>
+                        <div class="expand-icon">
+                            <i class="fas fa-arrow-up-right"></i>
+                        </div>
+                    </div>
+                    <div class="stats-value">30+</div>
+                    <div class="stats-label">Avaliações 5 estrelas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            Desenvolvido com <span class="heart">❤️</span> por 
+            <a href="https://t.me/Analista_Adminhu" target="_blank" class="footer-link">@Analista_Adminhu</a>
+        </p>
     </footer>
-  </main>
+
+    <script src="particles.config.js"></script>
+    <script src="main.js"></script>
 </body>
-</html>
+</html> 

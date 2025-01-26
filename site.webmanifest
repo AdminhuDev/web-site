@@ -1,0 +1,27 @@
+{
+    "name": "AdminhuDev - Desenvolvedor Full Stack",
+    "short_name": "AdminhuDev",
+    "description": "Desenvolvedor Full Stack especializado em Python, Node.js, React e tecnologias cloud",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#18181b",
+    "theme_color": "#8b5cf6",
+    "keywords": [
+        "desenvolvedor",
+        "programador",
+        "full stack",
+        "python",
+        "node.js",
+        "react",
+        "aws",
+        "docker",
+        "desenvolvimento web",
+        "tecnologia"
+    ],
+    "categories": [
+        "development",
+        "technology",
+        "programming"
+    ],
+    "lang": "pt-BR"
+} 
