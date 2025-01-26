@@ -14,11 +14,21 @@
 
 > Um site moderno e profissional para apresentação de serviços e portfolio digital.
 
-- 🎯 Interface moderna e responsiva
-- 💼 Apresentação profissional de serviços
-- 🌐 Otimizado para SEO
-- 📱 Design adaptativo para todos os dispositivos
-- ⚡ Performance otimizada
+### 📂 Estrutura do Projeto
+
+```
+.
+├── index.html          # Página de redirecionamento
+├── css/
+│   └── styles.css      # Estilos do site
+├── js/
+│   ├── main.js         # Scripts principais
+│   └── particles.config.js # Configuração de efeitos visuais
+├── assets/             # Recursos estáticos
+├── robots.txt          # Configurações para SEO
+├── sitemap.xml         # Mapa do site para SEO
+└── site.webmanifest    # Configuração PWA
+```
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -29,24 +39,22 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-### Backend
-![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
-
-### Banco de Dados
-![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+### Otimização
+![SEO](https://img.shields.io/badge/SEO-47A248?style=for-the-badge&logo=google-search-console&logoColor=white)
+![PWA](https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white)
 
 </div>
 
-## 🌟 Funcionalidades
+## 🌟 Características
 
 <div align="center">
 
-| Frontend | Backend |
+| Design | Otimização |
 |----------|---------|
-| 📱 Design Responsivo | 📊 Área Administrativa |
-| 🎨 Interface Moderna | 📈 Analytics Integrado |
-| 🌐 SEO Otimizado | 🔒 Sistema Seguro |
-| ⚡ Alta Performance | 🚀 API Escalável |
+| 📱 Design Responsivo | 🔍 SEO Otimizado |
+| 🎨 Interface Moderna | 📱 PWA Ready |
+| 🌓 Modo Escuro | 🚀 Performance Otimizada |
+| ✨ Efeitos Visuais | ⚡ Carregamento Rápido |
 
 </div>
 
