@@ -1,10 +1,13 @@
 # AdminhuDev - Site Oficial 🌐
 
+<div align="center">
+
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fadminhudev.site&up_message=online&down_message=offline&style=for-the-badge)](https://adminhudev.site)
 [![GitHub Repository](https://img.shields.io/badge/📁_Código_Fonte-web--site-181717?style=for-the-badge&logo=github)](https://github.com/AdminhuDev/web-site)
+[![Telegram](https://img.shields.io/badge/Telegram-@Analista__Adminhu-26A5E4?style=for-the-badge&logo=telegram)](https://t.me/Analista_Adminhu)
 
-<div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?lines=Site+Profissional;Portfolio+Digital;Soluções+Web&center=true&width=380&height=45">
+<img src="https://readme-typing-svg.herokuapp.com/?lines=Site+Profissional;Portfolio+Digital;Soluções+Web&center=true&width=380&height=45">
+
 </div>
 
 ## 📋 Sobre o Projeto
@@ -18,6 +21,8 @@
 - ⚡ Performance otimizada
 
 ## 🛠️ Tecnologias Utilizadas
+
+<div align="center">
 
 ### Frontend
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -34,21 +39,18 @@
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
+</div>
+
 ## 🌟 Funcionalidades
 
-- 📱 Design Responsivo
-- 🎨 Interface Moderna
-- 📊 Área Administrativa
-- 📈 Analytics Integrado
-- 🔒 Sistema Seguro
-- 🚀 Alta Performance
-
-## 🤝 Contato
-
 <div align="center">
-  
-[![Site](https://img.shields.io/badge/🌐_Site_Oficial-adminhudev.site-00ff88?style=for-the-badge)](https://adminhudev.site)
-[![Telegram](https://img.shields.io/badge/Telegram-@Analista__Adminhu-26A5E4?style=for-the-badge&logo=telegram)](https://t.me/Analista_Adminhu)
+
+| Frontend | Backend |
+|----------|---------|
+| 📱 Design Responsivo | 📊 Área Administrativa |
+| 🎨 Interface Moderna | 📈 Analytics Integrado |
+| 🌐 SEO Otimizado | 🔒 Sistema Seguro |
+| ⚡ Alta Performance | 🚀 API Escalável |
 
 </div>
 
