@@ -258,6 +258,7 @@ section {
     transform: translateY(-5px);
     background: rgba(39, 39, 42, 0.6);
     border-color: var(--primary);
+    backdrop-filter: blur(30px);
     box-shadow: 
         0 8px 32px rgba(139, 92, 246, 0.2),
         0 0 0 1px rgba(139, 92, 246, 0.3);
@@ -330,6 +331,7 @@ section {
     color: white;
     transform: scale(1.1);
     border-color: var(--primary);
+    backdrop-filter: blur(20px);
 }
 
 .channel-option .material-icons-round {
@@ -393,6 +395,7 @@ section {
 .music-btn:hover {
     background: var(--secondary);
     transform: scale(1.1);
+    backdrop-filter: blur(15px);
 }
 
 .music-btn.loading::after {
