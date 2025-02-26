@@ -4,7 +4,7 @@
 
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fadminhudev.site&up_message=online&down_message=offline&style=for-the-badge)](https://adminhudev.site)
 [![GitHub Repository](https://img.shields.io/badge/📁_Código_Fonte-web--site-181717?style=for-the-badge&logo=github)](https://github.com/AdminhuDev/web-site)
-[![Telegram](https://img.shields.io/badge/Telegram-@Analista__Adminhu-26A5E4?style=for-the-badge&logo=telegram)](https://t.me/Analista_Adminhu)
+[![Telegram](https://img.shields.io/badge/Telegram-@devAdminhu-26A5E4?style=for-the-badge&logo=telegram)](https://t.me/devAdminhu)
 
 <img src="https://readme-typing-svg.herokuapp.com/?lines=Site+Profissional;Portfolio+Digital;Soluções+Web&center=true&width=380&height=45">
 
